@@ -1,0 +1,51 @@
+{
+    "releases": [{
+        "display": "Release 1",
+        "tooltip": "",
+        "url": "",
+        "startDate": "",
+        "endDate": "",
+        "features": [{
+            "display": "feature 1",
+            "tooltip": "",
+            "url": "",
+            "items": [{
+                "display": "item 1",
+                "tooltip": "",
+                "url": ""
+            },{
+                "display": "item 2",
+                "tooltip": "",
+                "url": ""
+            }]
+        },{
+            "display": "Release 2",
+            "tooltip": "",
+            "url": ""
+        }]
+    },{
+        "display": "Release 3",
+        "tooltip": "",
+        "url": "",
+        "startDate": "",
+        "endDate": "",
+        "features": [{
+            "display": "feature 2",
+            "tooltip": "",
+            "url": "",
+            "items": [{
+                "display": "item 3",
+                "tooltip": "",
+                "url": ""
+            },{
+                "display": "item 4",
+                "tooltip": "",
+                "url": ""
+            }]
+        },{
+            "display": "Release 4",
+            "tooltip": "",
+            "url": ""
+        }]
+    }]
+}
