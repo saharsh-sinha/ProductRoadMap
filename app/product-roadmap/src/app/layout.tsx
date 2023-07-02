@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +15,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html  className="h-100 bg-dark" lang="en">
       <body className={inter.className}>{children}</body>
+      {/* <body className="h-100">{children}</body> */}
     </html>
   )
 }
