@@ -9,11 +9,13 @@ export default function Home() {
       <div>
         <TitleBar></TitleBar>
       </div>
-      <div>
-        <TimeLine></TimeLine>
-      </div>
-      <div className="h-100">
-        <Roadmap></Roadmap>
+      <div className="overflow-hidden d-flex flex-column h-100 fit-content">
+        <div>
+          <TimeLine></TimeLine>
+        </div>
+        <div className="h-100">
+          <Roadmap></Roadmap>
+        </div>
       </div>
     </main>
   )
