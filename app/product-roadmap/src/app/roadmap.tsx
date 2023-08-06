@@ -15,7 +15,7 @@ export default function Roadmap(props: {
 }) {
     let roadMapItems : RoadMapItem[] = [];
     releases.forEach(r => roadMapItems.push(r));
-    flags.forEach(f => roadMapItems.push(f));
+    //flags.forEach(f => roadMapItems.push(f));
     
     roadMapItems.sort((a, b) => {
         if (a.startDate < b.startDate) return -1;
@@ -204,28 +204,17 @@ function getReleases(): ReleaseModel[] {
         releaseModels.push(release);
     }
 
-
+    releaseModels.sort((a, b) => {
+        if (a.startDate < b.startDate) return -1;
+        else if (a.startDate > b.startDate) return 1;
+        else return 0;
+    });
     return releaseModels;
 }
-function addDays(date: Date, days: number): Date {
+export function addDays(date: Date, days: number): Date {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
   }
 
-const releases: ReleaseModel[] = getReleases();
-
-const flags: FlagModel[] = getFlags();
-
-function getFlags(): FlagModel[] {
-    let flags: FlagModel[] = [];
-    for (let i = 0; i < 30; i++) {
-        var flag = new FlagModel();
-        flag.label = 'flag ' + i;
-        flag.startDate = new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
-        flag.endDate = new Date(Math.ceil((2019 + (i*0.25))), Math.ceil(1 + i*0.25)%12, 15);
-        flag.itemType = RoadMapItemType.flag;
-        flags.push(flag);
-    }
-    return flags;
-}
+export const releases: ReleaseModel[] = getReleases();

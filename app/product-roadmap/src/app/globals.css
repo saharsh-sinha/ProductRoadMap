@@ -154,14 +154,13 @@ circle {
 .roadmap-container {
   padding-top:40vh;
   padding-bottom:40vh;
-  transition:all 20ms;
 }
 
 .map-body {
-  transition: all 200ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
-.timeline-flag {
+.timeline-marker {
   border-left: 4px dashed white;
   height:100vh;
   position:absolute;
@@ -170,12 +169,28 @@ circle {
   opacity:0.1;
 }
 
-.timeline-flag div {
+.timeline-marker div {
   position:absolute;
   top:95vh;
   transform: rotateX('90');
   color:white;
-  
+}
+
+.timeline-flag {
+  border-left: 4px solid rgba(0, 102, 255, 0.76);
+  height:100vh;
+  position:absolute;
+  top:120%;
+  opacity:0.8;
+}
+
+.timeline-flag-label {
+  width: 100px;
+  position: absolute;
+  top: -35px;
+  transform: rotateZ(-45deg);
+  background-color: rgba(0, 102, 255, 0.76);;
+  color: white;
 }
 
 .release-date {
@@ -189,4 +204,13 @@ circle {
 .flag {
   background-color: white;
   color: black;
+}
+
+.triangle-bottomleft {
+  width: 0;
+  height: 0;
+  border-bottom: 1em solid rgba(0, 102, 255, 0.76);
+  border-right: 1em solid transparent;
+  top:-13px;
+  position:absolute;
 }

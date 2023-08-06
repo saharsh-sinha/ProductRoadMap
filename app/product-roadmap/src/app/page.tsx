@@ -22,6 +22,7 @@ export default function Home() {
     <main className="d-flex flex-column justify-content-start h-100v w-100v bg-dark text-white overflow-y-hidden overflow-x-hidden">
       <div className="">
         <TitleBar></TitleBar>
+        {/* {margin} */}
       </div>
       
       <div 
@@ -45,12 +46,13 @@ function moveIntoFocus(entries: any) {
   
   if (entry.isIntersecting) {
       entry.target.classList.add("intersected");
-      console.log(entryName, "intersected", entry.target.offsetLeft, entry.target.style.marginLeft, entry)
+      //console.log(entryName, "intersected", entry.target.offsetLeft, entry.target.style.marginLeft, entry)
       let offset = entry.target.style.marginLeft.replace('px','');
+      // console.log(offset)
       setMargin(offset);
   } else {
       entry.target.classList.remove("intersected");
-      console.log(entryName, "not intersected")
+      //console.log(entryName, "not intersected")
   }
 }
 
