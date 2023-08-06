@@ -1,11 +1,9 @@
+import { RoadMapItem } from "./RoadMapItem";
 
-export class ReleaseModel {
+export class ReleaseModel extends RoadMapItem {
     
     releaseName: string = '';
     releaseDescription: string = '';
-
-    releaseStartDate: Date = new Date();
-    releaseEndDate: Date = new Date();
 
     url: string = '';
 

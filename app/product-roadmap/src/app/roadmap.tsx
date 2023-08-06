@@ -2,23 +2,139 @@
 "use client";
 
 import { ReleaseModel, FeatureModel, LineItemModel } from '../app/models/release';
-import { Send, Award, Justify, Link45deg } from 'react-bootstrap-icons';
+import { Send, Award, Justify, Link45deg, Flag } from 'react-bootstrap-icons';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { startDate, numberOfDays } from './timeline';
+import { useEffect, useRef } from 'react';
+import { FlagModel } from './models/FlagModel';
+import { RoadMapItem, RoadMapItemType } from './models/RoadMapItem';
 
-export default function Roadmap() {
-    return (<div>
-        {releases.map(r => 
-            (<div className="card fit-content p-2 my-2 mr-2" style={{marginLeft: numberOfDays(startDate, r.releaseStartDate)}}>
-                <div className="d-flex">
-                    <div className=" pr-2"><Send /></div>
-                    <div className="">{r.releaseName}</div>
-                </div>
-                <Feature features={r.features}/>
-            </div>)
-        )}
-        </div>)
+  
+export default function Roadmap(props: {
+    focusport: IntersectionObserver
+}) {
+    let roadMapItems : RoadMapItem[] = [];
+    releases.forEach(r => roadMapItems.push(r));
+    flags.forEach(f => roadMapItems.push(f));
+    
+    roadMapItems.sort((a, b) => {
+        if (a.startDate < b.startDate) return -1;
+        else if (a.startDate > b.startDate) return 1;
+        else {
+            if (a.itemType == RoadMapItemType.flag) return -1;
+            else if (b.itemType == RoadMapItemType.flag) return 1;
+            else return 0
+        };
+    
+    });
+    //console.log(roadMapItems);
+    return (
+        <>
+            {roadMapItems.map(r => 
+                <RoadmapItem roadmapItem={r} focusport={props.focusport} />
+            )}
+        </>)
 }
+
+
+export function RoadmapItem(props: {
+    roadmapItem: RoadMapItem,
+    focusport: IntersectionObserver
+}) {
+    // console.log(props.roadmapItem);
+    
+    if (props.roadmapItem.itemType == RoadMapItemType.release){
+        return (
+            <>
+                <Release release={props.roadmapItem as ReleaseModel} focusport={props.focusport} />
+            </>)
+    } else {
+        return (
+            <>
+                <ReleaseFlag flag={props.roadmapItem as FlagModel} />
+            </>)
+    }
+}
+
+export function ReleaseFlag(props: {
+    flag: FlagModel
+}) {
+    console.log(props.flag);
+    const ref = useRef<HTMLDivElement>(null);
+
+    return (
+        <div>
+            <div  
+                ref={ref} className="fit-content-width p-2 my-2 mr-2 flag" 
+                style={{marginLeft: (numberOfDays(startDate, props.flag.startDate)) }}>
+                <div className="d-flex pl-4 pr-4">
+                    <div className="pr-2 h6"><Flag /></div>
+                    <div className="h6">{props.flag.label}</div>
+                </div>
+                <div className="release-date">
+                    <i>
+                        {months[props.flag.startDate.getMonth()]} {props.flag.startDate.getDay()+1}, {props.flag.startDate.getFullYear()}
+                    </i>    
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export function Release(props: {
+    release: ReleaseModel,
+    focusport: IntersectionObserver,
+}) {
+    console.log(props.release);
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (ref.current) {
+            props.focusport.observe(ref.current);
+        }
+        
+        return () => {
+            if (ref.current) {
+                props.focusport.unobserve(ref.current);
+            }
+        }
+    })
+
+    return (
+        <div  >
+            <div  
+                ref={ref} className="card fit-content-width p-2 my-2 mr-2" 
+                style={{marginLeft: (numberOfDays(startDate, props.release.startDate)) }}>
+                <div className="d-flex">
+                    <div className="pr-2 h4"><Send /></div>
+                    <div className="h4">{props.release.releaseName}</div>
+                </div>
+                <div className="release-date">
+                    <i>
+                        {months[props.release.startDate.getMonth()]} {props.release.startDate.getDay()+1}, {props.release.startDate.getFullYear()}
+                    </i>    
+                </div>
+                <Feature features={props.release.features}/>
+            </div>
+        </div>
+    )
+}
+
+const months  = {
+    0: 'Jan',
+    1: 'Feb',
+    2: 'Mar',
+    3: 'Apr',
+    4: 'May',
+    5: 'Jun',
+    6: 'Jul',
+    7: 'Aug',
+    8: 'Sep',
+    9: 'Oct',
+    10: 'Nov',
+    11: 'Dec',
+}
+
 
 export function Feature(props: {
     features: FeatureModel[]
@@ -27,7 +143,7 @@ export function Feature(props: {
         {props.features.map((feature) => 
             (<div className="pl-2">
                 <div className="d-flex">
-                    <div className=" pr-2"><Award /></div>
+                    <div className="h5 pr-2"><Award /></div>
                     <OverlayTrigger
                         placement={'right'}
                         delay={{ show: 400, hide: 400 }}
@@ -36,9 +152,10 @@ export function Feature(props: {
                                 {feature.featureDescription}
                             </Tooltip>
                         }>
-                        <div className="">{feature.featureName}</div>
+
+                        <div className="h6"><a href={feature.url} className=" pl-2">{feature.featureName}</a></div>
                     </OverlayTrigger>
-                    <a href={feature.url} className=" pl-2"><Link45deg /></a>
+                    {/* <a href={feature.url} className=" pl-2"><Link45deg /></a> */}
                 </div>
                 {/* <LineItem lineItems={feature.lineItems}/> */}
             </div>)
@@ -60,15 +177,19 @@ export function LineItem(props: {
 }
 
 
+
 function getReleases(): ReleaseModel[] {
     var releaseModels: ReleaseModel[] = [];
-
+    let prevDate: Date = new Date(2019, 3, 15);
     for (let i = 0; i < 20; i++) {
         let release = new ReleaseModel();
         release.releaseName = "Release " + (i + 1);
         release.releaseDescription = "Release " + (i + 1) + " description";
-        release.releaseStartDate = new Date(Math.ceil((2019 + (i*0.25))), (1 + i)%12, 15);
-        release.releaseEndDate = new Date(Math.ceil((2019 + (i*0.25))), (1 + i)%12, 15);
+        release.startDate = prevDate; //  new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
+        prevDate = addDays(prevDate, Math.floor(Math.random() * 11));
+        release.endDate = prevDate;
+        prevDate = addDays(prevDate, Math.floor(Math.random() * 365) + 90);
+        release.itemType = RoadMapItemType.release;
         release.features = [];
         for (let j = 0; j < 4; j++) {
             var feature = new FeatureModel();
@@ -76,7 +197,7 @@ function getReleases(): ReleaseModel[] {
             feature.featureDescription = "Release " + (i + 1) + " Feature " + (j + 1) + " description";
             feature.lineItems = [new LineItemModel()];
             for (let k = 0; k < 20; k++) {
-        
+                
             }
             release.features.push(feature);
         }
@@ -86,97 +207,25 @@ function getReleases(): ReleaseModel[] {
 
     return releaseModels;
 }
-
-const text = "Lorem Ipsum is a dummy or placeholder text that's often used in print, infographics, or web design. The primary purpose of Lorem Ipsum is to create text that doesn't distract from the overall layout and visual hierarchy. It's also called filler or placeholder text." + 
-"Lorem Ipsum has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. " +
-"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
+function addDays(date: Date, days: number): Date {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
 
 const releases: ReleaseModel[] = getReleases();
-const releases1: ReleaseModel[] =[
-    {
-        releaseName: "Release 1",
-        releaseDescription: "Release 1 description",
-        releaseStartDate: new Date(2019, 10, 15),
-        releaseEndDate: new Date(2019, 10, 15),
-        url: "",
-        features: [
-            {
-                featureName: "Lorem Ipsum is simply dummy",
-                featureDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                url: "",
-                lineItems: [
-                    {
-                        lineItemName: "lineItem 1 a x",
-                        lineItemDescription: "lineItem 1 a x description",
-                        url: "",
-                    },
-                    {
-                        lineItemName: "lineItem 1 a y",
-                        lineItemDescription: "lineItem 1 a y description",
-                        url: "",
-                    },
-                ]
-            },
-            {
-                featureName: "Lorem Ipsum has been the industry's",
-                featureDescription: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s description",
-                url: "",
-                lineItems: [
-                    {
-                        lineItemName: "lineItem 1 b x",
-                        lineItemDescription: "lineItem 1 b x description",
-                        url: "",
-                    },
-                    {
-                        lineItemName: "lineItem 1 b y",
-                        lineItemDescription: "lineItem 1 b y description",
-                        url: "",
-                    },
-                ]
-            },
-        ]
-    },
-    {
-        releaseName: "Release 2",
-        releaseDescription: "Release 2 description",
-        releaseStartDate: new Date(2020, 10, 15),
-        releaseEndDate: new Date(2020, 10, 15),
-        url: "",
-        features: [
-            {
-                featureName: "when an unknown printer took",
-                featureDescription: "when an unknown printer took a galley of type and scrambled it to make a type specimen book description",
-                url: "",
-                lineItems: [
-                    {
-                        lineItemName: "lineItem 2 a x",
-                        lineItemDescription: "lineItem 2 a x description",
-                        url: "",
-                    },
-                    {
-                        lineItemName: "lineItem 2 a y",
-                        lineItemDescription: "lineItem 2 a y description",
-                        url: "",
-                    },
-                ]
-            },
-            {
-                featureName: "It has survived not only five centuries",
-                featureDescription: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged description",
-                url: "",
-                lineItems: [
-                    {
-                        lineItemName: "lineItem 2 b x",
-                        lineItemDescription: "lineItem 2 b x description",
-                        url: "",
-                    },
-                    {
-                        lineItemName: "lineItem 2 b y",
-                        lineItemDescription: "lineItem 2 b y description",
-                        url: "",
-                    },
-                ]
-            },
-        ]
-    },
-];
+
+const flags: FlagModel[] = getFlags();
+
+function getFlags(): FlagModel[] {
+    let flags: FlagModel[] = [];
+    for (let i = 0; i < 30; i++) {
+        var flag = new FlagModel();
+        flag.label = 'flag ' + i;
+        flag.startDate = new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
+        flag.endDate = new Date(Math.ceil((2019 + (i*0.25))), Math.ceil(1 + i*0.25)%12, 15);
+        flag.itemType = RoadMapItemType.flag;
+        flags.push(flag);
+    }
+    return flags;
+}

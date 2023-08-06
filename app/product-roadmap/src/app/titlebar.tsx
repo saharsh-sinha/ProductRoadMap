@@ -20,23 +20,6 @@ export default function TitleBar() {
                     <Justify />
                 </div>
             </h3>
-
-            {/* <div className="form-check form-switch d-flex">
-                <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                <Send />
-                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Releases</label>
-            </div>
-            <div className="form-check form-switch d-flex">
-                <input className="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  />
-                <Award />
-                <label className="form-check-label" htmlFor="flexSwitchCheckChecked">Feature</label>
-            </div>
-            <div className="form-check form-switch d-flex">
-                <input className="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" />
-                <Justify />
-                <label className="form-check-label" htmlFor="flexSwitchCheckDisabled">Items</label>
-            </div> */}
-           
         </div>
     </div>
     

@@ -1,7 +1,7 @@
 
 
-export const startDate: Date = new Date("2019-06-16");
-const endDate: Date = new Date("2024-01-16");
+export const startDate: Date = new Date("2017-06-16");
+const endDate: Date = new Date("2028-01-16");
 const yearBreakdown: boolean = true;
 const quarterBreakdown: boolean = true;
 const monthBreakdown: boolean = true;
@@ -16,9 +16,11 @@ export default function TimeLine() {
         {timeLines.map((timeLine) => (
             <div className="d-flex flex-row flex-nowrap justify-content-start">
                 {timeLine.map((timeFrame) => (
-                    <div  className="card" style={{width: dayWidthPx * numberOfDaysLocal(timeFrame)}}>
+                    <div className="card" style={{width: dayWidthPx * numberOfDaysLocal(timeFrame)}}>
                         {timeFrame.label}
-                        {/* {timeFrame.label + '|' + timeFrame.startDate.toDateString() + '|' + timeFrame.endDate.toDateString()} */}
+                        <div className="timeline-flag">
+                            {/* <div>{timeFrame.label}</div> */}
+                        </div>
                     </div>
                 ))}
             </div>
@@ -48,34 +50,12 @@ export default function TimeLine() {
 }
 
 export function numberOfDays(startDate: Date, endDate: Date): number {
-    let days = (endDate.getTime()-startDate.getTime())/(1000*60*60*24);
-    console.log(endDate.getTime(), startDate.getTime(), days);
+    let days = (endDate.getTime() - startDate.getTime()) / (1000*60*60*24);
     return days;
 }  
-
-    // return (<div className="d-flex flex-row flex-nowrap justify-content-start">
-        
-    //     {Object.entries(timelines).map((timeline, subTimeLines) => (
-    //         <div className="d-flex flex-column justify-content-start">
-    //             <div className="card " style={{width: 4 * width}}>
-    //                 {timeline}
-    //             </div>
-    //             <div className="d-flex flex-row flex-nowrap justify-content-start" >
-    //                 {Object.entries(subTimeLines).map((subTimeline) => (
-    //                     <div className="card" style={{width: width}}>
-    //                         {subTimeline[0]}
-    //                     </div>
-    //                 ))}
-    //             </div>
-    //         </div>
-    //     ))}
-
-
+    
 class TimeFrameModel {
 
-    /**
-     *
-     */
     constructor(
         startDate: Date,
         endDate: Date,

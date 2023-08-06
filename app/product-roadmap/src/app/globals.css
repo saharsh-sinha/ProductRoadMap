@@ -26,6 +26,167 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-.fit-content {
+.h-100v {
+  height: 100vh !important;
+}
+
+.w-100v {
+  width: 100vw !important;
+}
+
+.fit-content-width {
   width: fit-content;
+}
+
+.fit-content-height {
+  height: fit-content;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--red);
+  transform-origin: 0%;
+}
+
+
+
+.progress {
+  position: sticky;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+}
+
+.progress svg {
+  transform: translateX(-100px) rotate(-90deg);
+}
+
+circle {
+  stroke-dashoffset: 0;
+  stroke-width: 5%;
+  fill: none;
+}
+
+.bg {
+  stroke: var(--accent);
+  opacity: 0.2;
+}
+
+.progress .indicator {
+  stroke: var(--accent);
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 5px;
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background);
+}
+
+.section {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.section div {
+  width: 200px;
+  height: 300px;
+  border: 2px dotted red;
+  position: relative;
+}
+
+.focus {
+  background-color: green;
+}
+
+.focusPort {
+  border: 1px solid blue;
+}
+
+.positionFixed {
+  position: fixed;
+}
+
+.intersected {
+  background-color: blue;
+}
+
+.roadmap-container {
+  padding-top:40vh;
+  padding-bottom:40vh;
+  transition:all 20ms;
+}
+
+.map-body {
+  transition: all 200ms ease-in-out;
+}
+
+.timeline-flag {
+  border-left: 4px dashed white;
+  height:100vh;
+  position:absolute;
+  top:120%;
+  left:-2px;
+  opacity:0.1;
+}
+
+.timeline-flag div {
+  position:absolute;
+  top:95vh;
+  transform: rotateX('90');
+  color:white;
+  
+}
+
+.release-date {
+  margin-top: -10px;
+  padding-left: 0px;
+  font-weight: 600;
+  font-size: smaller;
+  margin-bottom: 5px;
+}
+
+.flag {
+  background-color: white;
+  color: black;
 }
