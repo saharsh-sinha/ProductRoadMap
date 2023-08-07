@@ -28,6 +28,12 @@ export class LineItemModel {
 
     lineItemName: string = '';
     lineItemDescription: string = '';
-    
     url: string = '';
+    type: LineItemType = LineItemType.noop;
+}
+
+export enum LineItemType {
+    noop,
+    bug,
+    enhancement
 }

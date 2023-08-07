@@ -1,21 +1,25 @@
 
 "use client";
 
-import { ReleaseModel, FeatureModel, LineItemModel } from '../app/models/release';
-import { Send, Award, Justify, Link45deg, Flag } from 'react-bootstrap-icons';
+import { ReleaseModel, FeatureModel, LineItemModel, LineItemType } from '../app/models/release';
+import { Send, Award, Stars, Bug, Flag } from 'react-bootstrap-icons';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { startDate, numberOfDays } from './timeline';
+import { numberOfDays, flags } from './timeline';
 import { useEffect, useRef } from 'react';
 import { FlagModel } from './models/FlagModel';
-import { RoadMapItem, RoadMapItemType } from './models/RoadMapItem';
+import { DateModel, RoadMapItem, RoadMapItemType } from './models/RoadMapItem';
 
   
 export default function Roadmap(props: {
+    releases: ReleaseModel[],
+    flags: FlagModel[],
+    dates: DateModel,
+    pixelsPerDay: number,
     focusport: IntersectionObserver
 }) {
     let roadMapItems : RoadMapItem[] = [];
-    releases.forEach(r => roadMapItems.push(r));
-    //flags.forEach(f => roadMapItems.push(f));
+    props.releases.forEach(r => roadMapItems.push(r));
+    props.flags.forEach(f => roadMapItems.push(f));
     
     roadMapItems.sort((a, b) => {
         if (a.startDate < b.startDate) return -1;
@@ -27,70 +31,94 @@ export default function Roadmap(props: {
         };
     
     });
-    //console.log(roadMapItems);
+    
+    let indexOfNextRelease = -1;
+    if (roadMapItems && roadMapItems.length > 0){
+        roadMapItems.forEach((r, i) => {
+            if (indexOfNextRelease == -1 && r.startDate > (new Date())){
+                indexOfNextRelease = i;
+            }
+        });
+    }
+
     return (
         <>
-            {roadMapItems.map(r => 
-                <RoadmapItem roadmapItem={r} focusport={props.focusport} />
+            {roadMapItems.map((r, i) => 
+                <RoadmapItem key={i} isNextRelease={i == indexOfNextRelease}  dates={props.dates} pixelsPerDay={props.pixelsPerDay} roadmapItem={r} focusport={props.focusport} />
             )}
         </>)
 }
 
 
 export function RoadmapItem(props: {
+    dates: DateModel,
+    pixelsPerDay: number,
     roadmapItem: RoadMapItem,
-    focusport: IntersectionObserver
-}) {
-    // console.log(props.roadmapItem);
-    
+    focusport: IntersectionObserver,
+    isNextRelease: boolean
+}) {    
     if (props.roadmapItem.itemType == RoadMapItemType.release){
         return (
             <>
-                <Release release={props.roadmapItem as ReleaseModel} focusport={props.focusport} />
+                <Release isNextRelease={props.isNextRelease}  dates={props.dates}  pixelsPerDay={props.pixelsPerDay} release={props.roadmapItem as ReleaseModel} focusport={props.focusport} />
             </>)
     } else {
         return (
             <>
-                <ReleaseFlag flag={props.roadmapItem as FlagModel} />
+                <ReleaseFlag    dates={props.dates} pixelsPerDay={props.pixelsPerDay} flag={props.roadmapItem as FlagModel} />
             </>)
     }
 }
 
 export function ReleaseFlag(props: {
+    dates: DateModel,
+    pixelsPerDay: number,
     flag: FlagModel
 }) {
-    console.log(props.flag);
     const ref = useRef<HTMLDivElement>(null);
-
+    
     return (
-        <div>
-            <div  
-                ref={ref} className="fit-content-width p-2 my-2 mr-2 flag" 
-                style={{marginLeft: (numberOfDays(startDate, props.flag.startDate)) }}>
-                <div className="d-flex pl-4 pr-4">
-                    <div className="pr-2 h6"><Flag /></div>
-                    <div className="h6">{props.flag.label}</div>
-                </div>
+        <div  
+            ref={ref} className="transition-400ms fit-content-width p-2 my-2 mr-2 timeline-flag-label" 
+            style={{marginLeft: props.pixelsPerDay * ( (numberOfDays(new Date(props.dates.startDate), new Date(props.flag.startDate)))) }}>
+            <div className="d-flex flex-column pl-4 pr-4">
+                <div className="h6">{props.flag.label}</div>
                 <div className="release-date">
                     <i>
-                        {months[props.flag.startDate.getMonth()]} {props.flag.startDate.getDay()+1}, {props.flag.startDate.getFullYear()}
+                        {months[new Date(props.flag.startDate).getMonth()]} {new Date(props.flag.startDate).getDay()+1}, {new Date(props.flag.startDate).getFullYear()}
                     </i>    
                 </div>
+                <div id="triangle-right"></div>
             </div>
         </div>
     )
 }
 
 export function Release(props: {
+    dates: DateModel,
+    pixelsPerDay: number,
     release: ReleaseModel,
     focusport: IntersectionObserver,
+    isNextRelease: boolean
 }) {
-    console.log(props.release);
+    // console.log(props.release);
+    if (props.isNextRelease){
+        console.log('release ' ,props.isNextRelease,  props.release.releaseName);
+    }
     const ref = useRef<HTMLDivElement>(null);
-
+    
     useEffect(() => {
         if (ref.current) {
             props.focusport.observe(ref.current);
+            if (props.isNextRelease) {
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: ref.current.offsetTop,
+                        behavior: 'smooth'
+                    } );
+                    console.log("scrolled")
+                }, 2000);
+            }
         }
         
         return () => {
@@ -101,21 +129,19 @@ export function Release(props: {
     })
 
     return (
-        <div  >
-            <div  
-                ref={ref} className="card fit-content-width p-2 my-2 mr-2" 
-                style={{marginLeft: (numberOfDays(startDate, props.release.startDate)) }}>
-                <div className="d-flex">
-                    <div className="pr-2 h4"><Send /></div>
-                    <div className="h4">{props.release.releaseName}</div>
-                </div>
-                <div className="release-date">
-                    <i>
-                        {months[props.release.startDate.getMonth()]} {props.release.startDate.getDay()+1}, {props.release.startDate.getFullYear()}
-                    </i>    
-                </div>
-                <Feature features={props.release.features}/>
+        <div  
+            ref={ref} className="release-card-bg release-card fit-content-width p-2 my-2 mr-2 transition-400ms" 
+            style={{marginLeft: props.pixelsPerDay * ((numberOfDays(props.dates.startDate, props.release.startDate))) }}>
+            <div className="d-flex">
+                <div className="pr-2 h4"><Send /></div>
+                <div className="h4">{props.release.releaseName}</div>
             </div>
+            <div className="release-date">
+                <i>
+                    {months[new Date(props.release.startDate).getMonth()]} {new Date(props.release.startDate).getDay()+1}, {new Date(props.release.startDate).getFullYear()}
+                </i>    
+            </div>
+            <Feature features={props.release.features}/>
         </div>
     )
 }
@@ -140,8 +166,8 @@ export function Feature(props: {
     features: FeatureModel[]
 }) {
     return (<div>
-        {props.features.map((feature) => 
-            (<div className="pl-2">
+        {props.features.map((feature, i) => 
+            (<div key={i} className="pl-2 {feature.cssClass}" >
                 <div className="d-flex">
                     <div className="h5 pr-2"><Award /></div>
                     <OverlayTrigger
@@ -153,11 +179,12 @@ export function Feature(props: {
                             </Tooltip>
                         }>
 
-                        <div className="h6"><a href={feature.url} className=" pl-2">{feature.featureName}</a></div>
+                        <div className="h6"><a href={feature.url} className="feature-name">{feature.featureName}</a></div>
                     </OverlayTrigger>
-                    {/* <a href={feature.url} className=" pl-2"><Link45deg /></a> */}
                 </div>
-                {/* <LineItem lineItems={feature.lineItems}/> */}
+                <div className='ml-2'>
+                    <LineItem lineItems={feature.lineItems}/>
+                </div>
             </div>)
         )}
         </div>)
@@ -168,53 +195,83 @@ export function LineItem(props: {
 }) {
    
     return (<div>
-        {props.lineItems.map((lineItem) => 
-            (<div className=" pl-2">
-                {lineItem.lineItemName}
+        {props.lineItems.map((lineItem, i) => 
+            (<div key={i} className=" pl-2 d-flex">
+                <div className="line-item-name">
+                    <LineItemTypeIcon type={lineItem.type} />
+                </div>
+                <OverlayTrigger
+                    placement={'right'}
+                    delay={{ show: 400, hide: 400 }}
+                    overlay={
+                        <Tooltip>
+                            {lineItem.lineItemDescription}
+                        </Tooltip>
+                    }>
+
+                    <a href={lineItem.url} className="line-item-name pl-1">{lineItem.lineItemName}</a>
+                </OverlayTrigger>
+                
             </div>)
         )}
         </div>)
 }
 
-
-
-function getReleases(): ReleaseModel[] {
-    var releaseModels: ReleaseModel[] = [];
-    let prevDate: Date = new Date(2019, 3, 15);
-    for (let i = 0; i < 20; i++) {
-        let release = new ReleaseModel();
-        release.releaseName = "Release " + (i + 1);
-        release.releaseDescription = "Release " + (i + 1) + " description";
-        release.startDate = prevDate; //  new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
-        prevDate = addDays(prevDate, Math.floor(Math.random() * 11));
-        release.endDate = prevDate;
-        prevDate = addDays(prevDate, Math.floor(Math.random() * 365) + 90);
-        release.itemType = RoadMapItemType.release;
-        release.features = [];
-        for (let j = 0; j < 4; j++) {
-            var feature = new FeatureModel();
-            feature.featureName = "Release " + (i + 1) + " Feature " + (j + 1);
-            feature.featureDescription = "Release " + (i + 1) + " Feature " + (j + 1) + " description";
-            feature.lineItems = [new LineItemModel()];
-            for (let k = 0; k < 20; k++) {
-                
-            }
-            release.features.push(feature);
-        }
-        releaseModels.push(release);
+export function LineItemTypeIcon(props: {
+    type: LineItemType
+}) {
+    if (props.type == LineItemType.bug) {
+        return <Bug />;
     }
-
-    releaseModels.sort((a, b) => {
-        if (a.startDate < b.startDate) return -1;
-        else if (a.startDate > b.startDate) return 1;
-        else return 0;
-    });
-    return releaseModels;
+    else {
+        return <Stars />
+    }
 }
+
+// function getReleases1(): ReleaseModel[] {
+//     var releaseModels: ReleaseModel[] = [];
+//     let prevDate: Date = new Date(2019, 3, 15);
+//     for (let i = 0; i < 20; i++) {
+//         let release = new ReleaseModel();
+//         release.releaseName = "Release " + (i + 1);
+//         release.releaseDescription = "Release " + (i + 1) + " description";
+//         release.startDate = prevDate; //  new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
+//         prevDate = addDays(prevDate, Math.floor(Math.random() * 11));
+//         release.endDate = prevDate;
+//         prevDate = addDays(prevDate, Math.floor(Math.random() * 365) + 90);
+//         release.itemType = RoadMapItemType.release;
+//         release.features = [];
+//         let numberOffeatures = Math.ceil(Math.random() * 5);
+//         for (let j = 0; j < numberOffeatures; j++) {
+//             var feature = new FeatureModel();
+//             feature.featureName = "Release " + (i + 1) + " Feature " + (j + 1);
+//             feature.featureDescription = "Release " + (i + 1) + " Feature " + (j + 1) + " description";
+//             feature.lineItems = [];
+//             let numberOfLineItems = Math.ceil(Math.random() * 3);
+//             for (let k = 0; k < numberOfLineItems; k++) {
+//                 let lineItem = new LineItemModel();
+//                 lineItem.lineItemName = "Release " + (i + 1) + " Feature " + (j + 1)  + " LineItem " + (k + 1);
+//                 lineItem.lineItemDescription = lineItem.lineItemName + " description";
+//                 lineItem.type = Math.random() > 0.8 ? LineItemType.bug : LineItemType.enhancement;
+//                 feature.lineItems.push(lineItem);
+//             }
+//             release.features.push(feature);
+//         }
+//         releaseModels.push(release);
+//     }
+
+//     releaseModels.sort((a, b) => {
+//         if (a.startDate < b.startDate) return -1;
+//         else if (a.startDate > b.startDate) return 1;
+//         else return 0;
+//     });
+//     return releaseModels;
+// }
+
 export function addDays(date: Date, days: number): Date {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
   }
 
-export const releases: ReleaseModel[] = getReleases();
+// export const releases: ReleaseModel[] = getReleases();

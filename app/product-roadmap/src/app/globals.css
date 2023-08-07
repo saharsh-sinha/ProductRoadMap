@@ -11,7 +11,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
+    --background-start-rgb: 10, 10, 10;
     --background-end-rgb: 0, 0, 0;
   }
 }
@@ -24,6 +24,35 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.body-bg {
+
+  background: rgb(0,25,217);
+  background: linear-gradient(125deg, rgba(0,25,217,1) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, rgba(142,0,200,1) 100%);
+
+}
+
+.release-card-bg {
+
+  background: rgb(0,12,105);
+  background: linear-gradient(-130deg, rgba(0,12,105,1) 0%, rgba(0,0,0,1) 25%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 75%, rgba(83,0,117,1) 100%);
+
+}
+
+.timeline-header-bg-odd {
+
+  background: rgb(0,12,105);
+  background: linear-gradient(-170deg, rgba(0,12,105,1) 0%, rgba(0,0,0,1) 20%);
+
+}
+
+.timeline-header-bg-even {
+
+  
+  background: rgb(83,0,117,);
+  background: linear-gradient(-170deg, rgba(83,0,117,1) 0%, rgba(0,0,0,1) 20%);
+
 }
 
 .h-100v {
@@ -147,10 +176,6 @@ circle {
   position: fixed;
 }
 
-.intersected {
-  background-color: blue;
-}
-
 .roadmap-container {
   padding-top:40vh;
   padding-bottom:40vh;
@@ -160,37 +185,41 @@ circle {
   transition: all 400ms ease-in-out;
 }
 
-.timeline-marker {
-  border-left: 4px dashed white;
-  height:100vh;
-  position:absolute;
-  top:120%;
-  left:-2px;
-  opacity:0.1;
+.transition-400ms {
+  transition: all 400ms ease-in-out;
 }
 
-.timeline-marker div {
-  position:absolute;
-  top:95vh;
-  transform: rotateX('90');
-  color:white;
+.timeline-marker {
+  border-left: 4px #444 dotted;
+  height: 100vh;
+  position: absolute;
+  top: 120%;
+  left: -2px;
 }
+
+/* .timeline-header {
+  border: 1px
+} */
 
 .timeline-flag {
-  border-left: 4px solid rgba(0, 102, 255, 0.76);
+  border-left: 6px solid rgba(0, 102, 255, 0.76);
   height:100vh;
   position:absolute;
-  top:120%;
-  opacity:0.8;
+  top:30px;
+  /* opacity:0.8; */
+  margin-left:-6px;
 }
 
 .timeline-flag-label {
-  width: 100px;
-  position: absolute;
-  top: -35px;
-  transform: rotateZ(-45deg);
+  width: fit-content;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  bottom: 0;
   background-color: rgba(0, 102, 255, 0.76);;
   color: white;
+  padding-left:0px;
+  /* left: 6px;; */
 }
 
 .release-date {
@@ -206,11 +235,62 @@ circle {
   color: black;
 }
 
-.triangle-bottomleft {
+.absolutely-positioned {
+  position: relative;
+  top:0px;
+}
+
+.control-panel {
+  width: '400px';
+  background-color: black!important;
+  border-radius: 5px;
+  padding: 10px;
+  color: white!important;
+}
+
+.feature-name {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 1em;
+}
+
+.feature-name:hover {
+  text-decoration: underline;
+}
+
+.line-item-name {
+  text-decoration: none;
+  color: #ccc;
+  font-size: 0.9em;
+  top: -5px;
+  position: relative;
+  line-height: 0.90em;
+  font-style: italic;
+}
+
+.line-item-name:hover {
+  text-decoration: underline;
+}
+
+.release-card {
+  border-radius: 5px!important;
+  background-color: #000!important;
+  border: 1px solid #222!important;
+  color: #ccc;
+  position: relative;
+}
+
+.foreground-color {
+  color: #ccc;
+}
+
+#triangle-right {
   width: 0;
   height: 0;
-  border-bottom: 1em solid rgba(0, 102, 255, 0.76);
-  border-right: 1em solid transparent;
-  top:-13px;
-  position:absolute;
+  border-top: 30px solid transparent;
+  border-left: 15px solid rgba(0, 102, 255, 0.76);
+  border-bottom: 28px solid transparent;
+  position: absolute;
+  left: 100%;
+  top: 0px;
 }

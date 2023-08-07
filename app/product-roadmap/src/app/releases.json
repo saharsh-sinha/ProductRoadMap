@@ -1,0 +1,1437 @@
+[
+  {
+    "startDate": "2019-04-15T07:00:00.000Z",
+    "endDate": "2019-04-24T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 1 was made long time ago",
+    "releaseDescription": "Release 1 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 1 Feature 1",
+        "featureDescription": "Release 1 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 1 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 1 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 1 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 1 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 1 Feature 2",
+        "featureDescription": "Release 1 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 1 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 1 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 1 Feature 3",
+        "featureDescription": "Release 1 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 1 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 1 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 1 Feature 4",
+        "featureDescription": "Release 1 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 1 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 1 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 1 Feature 4 LineItem 2",
+            "lineItemDescription": "Release 1 Feature 4 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 1 Feature 4 LineItem 3",
+            "lineItemDescription": "Release 1 Feature 4 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 1 Feature 5",
+        "featureDescription": "Release 1 Feature 5 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 1 Feature 5 LineItem 1",
+            "lineItemDescription": "Release 1 Feature 5 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 1 Feature 5 LineItem 2",
+            "lineItemDescription": "Release 1 Feature 5 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 1 Feature 5 LineItem 3",
+            "lineItemDescription": "Release 1 Feature 5 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2020-01-12T08:00:00.000Z",
+    "endDate": "2020-01-22T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 2",
+    "releaseDescription": "Release 2 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 2 Feature 1",
+        "featureDescription": "Release 2 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 2 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 2 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 2 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 2 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 2 Feature 1 LineItem 3",
+            "lineItemDescription": "Release 2 Feature 1 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2020-07-13T07:00:00.000Z",
+    "endDate": "2020-07-14T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 3",
+    "releaseDescription": "Release 3 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 3 Feature 1",
+        "featureDescription": "Release 3 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 3 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 3 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 3 Feature 2",
+        "featureDescription": "Release 3 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 3 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 3 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 3 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 3 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 3 Feature 3",
+        "featureDescription": "Release 3 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 3 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 3 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 3 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 3 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2021-04-12T07:00:00.000Z",
+    "endDate": "2021-04-19T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 4",
+    "releaseDescription": "Release 4 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 4 Feature 1",
+        "featureDescription": "Release 4 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 4 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 4 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 4 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 4 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 4 Feature 2",
+        "featureDescription": "Release 4 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 4 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 4 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 4 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 4 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 4 Feature 2 LineItem 3",
+            "lineItemDescription": "Release 4 Feature 2 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 4 Feature 3",
+        "featureDescription": "Release 4 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 4 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 4 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 4 Feature 4",
+        "featureDescription": "Release 4 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 4 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 4 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 4 Feature 4 LineItem 2",
+            "lineItemDescription": "Release 4 Feature 4 LineItem 2 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 4 Feature 5",
+        "featureDescription": "Release 4 Feature 5 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 4 Feature 5 LineItem 1",
+            "lineItemDescription": "Release 4 Feature 5 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2022-06-22T07:00:00.000Z",
+    "endDate": "2022-06-23T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 5",
+    "releaseDescription": "Release 5 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 5 Feature 1",
+        "featureDescription": "Release 5 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 5 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 5 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 5 Feature 2",
+        "featureDescription": "Release 5 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 5 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 5 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 5 Feature 3",
+        "featureDescription": "Release 5 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 5 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 5 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 5 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 5 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 5 Feature 3 LineItem 3",
+            "lineItemDescription": "Release 5 Feature 3 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 5 Feature 4",
+        "featureDescription": "Release 5 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 5 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 5 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 5 Feature 5",
+        "featureDescription": "Release 5 Feature 5 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 5 Feature 5 LineItem 1",
+            "lineItemDescription": "Release 5 Feature 5 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 5 Feature 5 LineItem 2",
+            "lineItemDescription": "Release 5 Feature 5 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2023-08-31T07:00:00.000Z",
+    "endDate": "2023-09-05T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 6",
+    "releaseDescription": "Release 6 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 6 Feature 1",
+        "featureDescription": "Release 6 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 6 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 6 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 6 Feature 2",
+        "featureDescription": "Release 6 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 6 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 6 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2024-01-29T08:00:00.000Z",
+    "endDate": "2024-02-08T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 7",
+    "releaseDescription": "Release 7 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 7 Feature 1",
+        "featureDescription": "Release 7 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 7 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 7 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 7 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 7 Feature 2",
+        "featureDescription": "Release 7 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 7 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 7 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 7 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 7 Feature 3",
+        "featureDescription": "Release 7 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 7 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 7 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 7 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 3 LineItem 3",
+            "lineItemDescription": "Release 7 Feature 3 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 7 Feature 4",
+        "featureDescription": "Release 7 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 7 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 7 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 4 LineItem 2",
+            "lineItemDescription": "Release 7 Feature 4 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 4 LineItem 3",
+            "lineItemDescription": "Release 7 Feature 4 LineItem 3 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 7 Feature 5",
+        "featureDescription": "Release 7 Feature 5 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 7 Feature 5 LineItem 1",
+            "lineItemDescription": "Release 7 Feature 5 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 5 LineItem 2",
+            "lineItemDescription": "Release 7 Feature 5 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 7 Feature 5 LineItem 3",
+            "lineItemDescription": "Release 7 Feature 5 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2025-02-03T08:00:00.000Z",
+    "endDate": "2025-02-06T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 8",
+    "releaseDescription": "Release 8 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 8 Feature 1",
+        "featureDescription": "Release 8 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 8 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 8 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 8 Feature 2",
+        "featureDescription": "Release 8 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 8 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 8 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 8 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 8 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 8 Feature 2 LineItem 3",
+            "lineItemDescription": "Release 8 Feature 2 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2026-03-02T08:00:00.000Z",
+    "endDate": "2026-03-08T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 9",
+    "releaseDescription": "Release 9 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 9 Feature 1",
+        "featureDescription": "Release 9 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 9 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 9 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 9 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 9 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 9 Feature 2",
+        "featureDescription": "Release 9 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 9 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 9 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 9 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 9 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 9 Feature 2 LineItem 3",
+            "lineItemDescription": "Release 9 Feature 2 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 9 Feature 3",
+        "featureDescription": "Release 9 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 9 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 9 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 9 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 9 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 9 Feature 4",
+        "featureDescription": "Release 9 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 9 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 9 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 9 Feature 4 LineItem 2",
+            "lineItemDescription": "Release 9 Feature 4 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 9 Feature 4 LineItem 3",
+            "lineItemDescription": "Release 9 Feature 4 LineItem 3 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2027-06-05T07:00:00.000Z",
+    "endDate": "2027-06-05T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 10",
+    "releaseDescription": "Release 10 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 10 Feature 1",
+        "featureDescription": "Release 10 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 10 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 10 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 10 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 10 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 10 Feature 1 LineItem 3",
+            "lineItemDescription": "Release 10 Feature 1 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2028-03-07T08:00:00.000Z",
+    "endDate": "2028-03-15T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 11",
+    "releaseDescription": "Release 11 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 11 Feature 1",
+        "featureDescription": "Release 11 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 11 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 11 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 11 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 11 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 11 Feature 2",
+        "featureDescription": "Release 11 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 11 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 11 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 11 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 11 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 11 Feature 2 LineItem 3",
+            "lineItemDescription": "Release 11 Feature 2 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 11 Feature 3",
+        "featureDescription": "Release 11 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 11 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 11 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 11 Feature 4",
+        "featureDescription": "Release 11 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 11 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 11 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 11 Feature 4 LineItem 2",
+            "lineItemDescription": "Release 11 Feature 4 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2028-12-13T08:00:00.000Z",
+    "endDate": "2028-12-22T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 12",
+    "releaseDescription": "Release 12 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 12 Feature 1",
+        "featureDescription": "Release 12 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 12 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 12 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 12 Feature 2",
+        "featureDescription": "Release 12 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 12 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 12 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 12 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 12 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 12 Feature 3",
+        "featureDescription": "Release 12 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 12 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 12 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 12 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 12 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 12 Feature 4",
+        "featureDescription": "Release 12 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 12 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 12 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 12 Feature 4 LineItem 2",
+            "lineItemDescription": "Release 12 Feature 4 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 12 Feature 4 LineItem 3",
+            "lineItemDescription": "Release 12 Feature 4 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 12 Feature 5",
+        "featureDescription": "Release 12 Feature 5 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 12 Feature 5 LineItem 1",
+            "lineItemDescription": "Release 12 Feature 5 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 12 Feature 5 LineItem 2",
+            "lineItemDescription": "Release 12 Feature 5 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 12 Feature 5 LineItem 3",
+            "lineItemDescription": "Release 12 Feature 5 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2029-09-04T07:00:00.000Z",
+    "endDate": "2029-09-10T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 13",
+    "releaseDescription": "Release 13 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 13 Feature 1",
+        "featureDescription": "Release 13 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 13 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 13 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2030-01-11T08:00:00.000Z",
+    "endDate": "2030-01-13T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 14",
+    "releaseDescription": "Release 14 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 14 Feature 1",
+        "featureDescription": "Release 14 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 14 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 14 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 14 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 14 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 14 Feature 1 LineItem 3",
+            "lineItemDescription": "Release 14 Feature 1 LineItem 3 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 14 Feature 2",
+        "featureDescription": "Release 14 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 14 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 14 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 14 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 14 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 14 Feature 3",
+        "featureDescription": "Release 14 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 14 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 14 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 14 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 14 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 14 Feature 4",
+        "featureDescription": "Release 14 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 14 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 14 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2031-03-09T08:00:00.000Z",
+    "endDate": "2031-03-09T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 15",
+    "releaseDescription": "Release 15 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 15 Feature 1",
+        "featureDescription": "Release 15 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 15 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 15 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 15 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 15 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2031-06-09T07:00:00.000Z",
+    "endDate": "2031-06-17T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 16",
+    "releaseDescription": "Release 16 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 16 Feature 1",
+        "featureDescription": "Release 16 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 16 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 16 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 16 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 16 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 16 Feature 2",
+        "featureDescription": "Release 16 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 16 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 16 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 16 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 16 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 16 Feature 3",
+        "featureDescription": "Release 16 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 16 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 16 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 1
+          },
+          {
+            "lineItemName": "Release 16 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 16 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 16 Feature 3 LineItem 3",
+            "lineItemDescription": "Release 16 Feature 3 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2031-10-10T07:00:00.000Z",
+    "endDate": "2031-10-16T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 17",
+    "releaseDescription": "Release 17 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 17 Feature 1",
+        "featureDescription": "Release 17 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 17 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 17 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 17 Feature 2",
+        "featureDescription": "Release 17 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 17 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 17 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 17 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 17 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 17 Feature 3",
+        "featureDescription": "Release 17 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 17 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 17 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 17 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 17 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 17 Feature 3 LineItem 3",
+            "lineItemDescription": "Release 17 Feature 3 LineItem 3 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2032-07-03T07:00:00.000Z",
+    "endDate": "2032-07-07T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 18",
+    "releaseDescription": "Release 18 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 18 Feature 1",
+        "featureDescription": "Release 18 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 18 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 18 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 18 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 18 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 18 Feature 1 LineItem 3",
+            "lineItemDescription": "Release 18 Feature 1 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 18 Feature 2",
+        "featureDescription": "Release 18 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 18 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 18 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 18 Feature 3",
+        "featureDescription": "Release 18 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 18 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 18 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 18 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 18 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 18 Feature 3 LineItem 3",
+            "lineItemDescription": "Release 18 Feature 3 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2033-05-26T07:00:00.000Z",
+    "endDate": "2033-05-28T07:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 19",
+    "releaseDescription": "Release 19 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 19 Feature 1",
+        "featureDescription": "Release 19 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 19 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 19 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 19 Feature 1 LineItem 2",
+            "lineItemDescription": "Release 19 Feature 1 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 19 Feature 1 LineItem 3",
+            "lineItemDescription": "Release 19 Feature 1 LineItem 3 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 19 Feature 2",
+        "featureDescription": "Release 19 Feature 2 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 19 Feature 2 LineItem 1",
+            "lineItemDescription": "Release 19 Feature 2 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 19 Feature 2 LineItem 2",
+            "lineItemDescription": "Release 19 Feature 2 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 19 Feature 2 LineItem 3",
+            "lineItemDescription": "Release 19 Feature 2 LineItem 3 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 19 Feature 3",
+        "featureDescription": "Release 19 Feature 3 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 19 Feature 3 LineItem 1",
+            "lineItemDescription": "Release 19 Feature 3 LineItem 1 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 19 Feature 3 LineItem 2",
+            "lineItemDescription": "Release 19 Feature 3 LineItem 2 description",
+            "url": "",
+            "type": 2
+          },
+          {
+            "lineItemName": "Release 19 Feature 3 LineItem 3",
+            "lineItemDescription": "Release 19 Feature 3 LineItem 3 description",
+            "url": "",
+            "type": 1
+          }
+        ]
+      },
+      {
+        "featureName": "Release 19 Feature 4",
+        "featureDescription": "Release 19 Feature 4 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 19 Feature 4 LineItem 1",
+            "lineItemDescription": "Release 19 Feature 4 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      },
+      {
+        "featureName": "Release 19 Feature 5",
+        "featureDescription": "Release 19 Feature 5 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 19 Feature 5 LineItem 1",
+            "lineItemDescription": "Release 19 Feature 5 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "startDate": "2034-02-21T08:00:00.000Z",
+    "endDate": "2034-02-27T08:00:00.000Z",
+    "cssClass": "",
+    "itemType": 1,
+    "releaseName": "Release 20",
+    "releaseDescription": "Release 20 description",
+    "url": "",
+    "features": [
+      {
+        "featureName": "Release 20 Feature 1",
+        "featureDescription": "Release 20 Feature 1 description",
+        "url": "",
+        "lineItems": [
+          {
+            "lineItemName": "Release 20 Feature 1 LineItem 1",
+            "lineItemDescription": "Release 20 Feature 1 LineItem 1 description",
+            "url": "",
+            "type": 2
+          }
+        ]
+      }
+    ]
+  }
+]

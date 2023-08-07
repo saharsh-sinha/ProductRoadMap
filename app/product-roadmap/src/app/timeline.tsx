@@ -1,46 +1,25 @@
-import { FlagModel } from "./models/FlagModel";
-import { RoadMapItemType } from "./models/RoadMapItem";
-import { addDays, releases } from "./roadmap";
+import { DateModel } from "./models/RoadMapItem";
 
-
-export const startDate: Date = new Date("2017-06-16");
-const endDate: Date = new Date("2028-01-16");
-const yearBreakdown: boolean = true;
-const quarterBreakdown: boolean = true;
-const monthBreakdown: boolean = true;
-const weekBreakdown: boolean = true;
-const dayWidthPx = 1;
-
-export default function TimeLine() {
-    let timeLines: TimeFrameModel[][]  = [];
-    let startDate = new Date(releases[0].startDate.getFullYear() - 2, releases[0].startDate.getMonth(), releases[0].startDate.getDay());
-    let endDate = new Date(releases[releases.length-1].endDate.getFullYear() + 2, 11, 31);
-    timeLines.push(getTimeFramesYear(startDate, endDate));
-    // console.log(timeLines);
-    return (<div className="d-flex flex-column flex-nowrap justify-content-start">
-        {timeLines.map((timeLine) => (
-            <div className="d-flex flex-row flex-nowrap justify-content-start">
-                {timeLine.map((timeFrame) => (
-                    <div className="card" style={{width: dayWidthPx * numberOfDaysLocal(timeFrame), position: 'absolute', left: numberOfDays(startDate, timeFrame.startDate) }}>
-                        {timeFrame.label}
-                        <div className="timeline-marker">
-                            {/* <div>{timeFrame.label}</div> */}
+export const timeLines: TimeFrameModel[][]  = [];
+export default function TimeLine(props: {
+    dates: DateModel,
+    pixelsPerDay: number
+}) {
+    timeLines.push(getTimeFramesYear(props.dates.startDate, props.dates.endDate));
+    return (
+        <div className="d-flex flex-column flex-nowrap justify-content-start">
+            {timeLines.map((timeLine, i) => (
+                <div key={i} className="d-flex flex-row flex-nowrap justify-content-start">
+                    {timeLine.map((timeFrame, j) => (
+                        <div key={i*100+j} className={`release-card transition-400ms ${j % 2 == 0 ? "timeline-header-bg-even" : "timeline-header-bg-odd"}`} 
+                            style={{width: props.pixelsPerDay * numberOfDaysLocal(timeFrame), position: 'absolute', left: props.pixelsPerDay * numberOfDays(props.dates.startDate, timeFrame.startDate) }}>
+                            {timeFrame.label}
                         </div>
-                    </div>
-                ))}
-            </div>
-        ))}
-        {
-            flags.map(flag => (
-                <div className="timeline-flag" style={{left: numberOfDays(startDate, flag.startDate) }}>
-                    
-                    <div className="triangle-bottomleft"><div className="timeline-flag-label">
-                        {flag.label}
-                    </div></div>
+                    ))}
                 </div>
-            ))
-        }
-    </div>)
+            ))}
+        </div>
+    )
 
     function getTimeFramesYear(startDate: Date, endDate: Date): TimeFrameModel[] {
         var timeFrames: TimeFrameModel[] = [];
@@ -65,11 +44,11 @@ export default function TimeLine() {
 }
 
 export function numberOfDays(startDate: Date, endDate: Date): number {
-    let days = (endDate.getTime() - startDate.getTime()) / (1000*60*60*24);
+    let days = (new Date(endDate).getTime() - new Date(startDate).getTime()) / (1000*60*60*24);
     return days;
 }  
     
-class TimeFrameModel {
+export class TimeFrameModel {
 
     constructor(
         startDate: Date,
@@ -84,28 +63,24 @@ class TimeFrameModel {
     public endDate: Date = new Date();
     public label: string = "";
     
-    get numberOfDays(): number {
-        let days = (endDate.getTime()-startDate.getTime())/(1000*60*60*24);
-        console.log(endDate.getTime(), startDate.getTime(), days);
-        return days;
-    }  
+    
 } 
 
 
-const flags: FlagModel[] = getFlags();
+// export const flags: FlagModel[] = getFlags();
 
-function getFlags(): FlagModel[] {
-    let flags: FlagModel[] = [];
-    let prevDate: Date = new Date(2019, 2, 15);
-    for (let i = 0; i < 30; i++) {
-        var flag = new FlagModel();
-        flag.label = 'flag ' + i;
-        flag.startDate = prevDate; //  new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
-        prevDate = addDays(prevDate, Math.floor(Math.random() * 11));
-        flag.endDate = prevDate;
-        prevDate = addDays(prevDate, Math.floor(Math.random() * 365) + 90);
-        flag.itemType = RoadMapItemType.flag;
-        flags.push(flag);
-    }
-    return flags;
-}
+// function getFlags(): FlagModel[] {
+//     let flags: FlagModel[] = [];
+//     let prevDate: Date = new Date(2019, 2, 15);
+//     for (let i = 0; i < 30; i++) {
+//         var flag = new FlagModel();
+//         flag.label = 'flag ' + i;
+//         flag.startDate = prevDate; //  new Date(Math.ceil(2019 + (i*0.25)), Math.ceil(1 + i*0.25)%12, 15);
+//         prevDate = addDays(prevDate, Math.floor(Math.random() * 11));
+//         flag.endDate = prevDate;
+//         prevDate = addDays(prevDate, Math.floor(Math.random() * 365) + 90);
+//         flag.itemType = RoadMapItemType.flag;
+//         flags.push(flag);
+//     }
+//     return flags;
+// }
