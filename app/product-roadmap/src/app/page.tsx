@@ -16,13 +16,8 @@ import flagsJson from './flags.json'
 export default function Home() {
   const releases: ReleaseModel[] = releasesJson as unknown as ReleaseModel[];
   const flags: FlagModel[] = flagsJson as unknown as FlagModel[];
-  console.log(releases, flags);
+  // console.log(releases, flags);
 
-  let observerOptions = {
-    root: null,
-    rootMargin: "-38% 1000% -60% 1000%",
-    threshold: 0,
-  };
   const [margin, setMargin] = useState(0);
   const [pixelsPerDay, setPixelsPerDay] = useState(1);
   const [flagsAreVisible, setFlagsVisibility] = useState(true);
@@ -33,10 +28,24 @@ export default function Home() {
   // const [flags, setFlags] = useState(new Array<FlagModel>());
 
   let dates =new DateModel(); 
+  
+  let observerOptions = {
+    root: null,
+    rootMargin: "-38% 1000% -60% 1000%",
+    threshold: 0,
+  };
   let observer = new IntersectionObserver(moveIntoFocus, observerOptions);
+  
+  let markerObserverOptions = {
+    root: null,
+    rootMargin: "0% -23% 0% -23%",
+    threshold: 0,
+  };
+  let markerObserver = new IntersectionObserver(makeMoreVisible, markerObserverOptions);
+
   dates.startDate = new Date(new Date(releases[0].startDate).getFullYear() - 2, new Date(releases[0].startDate).getMonth(), new Date(releases[0].startDate).getDay());
   dates.endDate = new Date(new Date(releases[releases.length-1].endDate).getFullYear() + 2, 11, 31);
-  console.log(dates);
+  // console.log(dates);
   return (
     <main className="d-flex flex-column justify-content-start h-100v w-100v body-bg text-white overflow-y-hidden overflow-x-hidden">
       <div className="">
@@ -55,7 +64,9 @@ export default function Home() {
         className='transition-400ms'>
         <RoadmapMarkers
           flags={flags}  
-          pixelsPerDay={pixelsPerDay}  dates={dates}
+          pixelsPerDay={pixelsPerDay}  
+          dates={dates}
+          focusport={markerObserver}
         ></RoadmapMarkers>
       </div>
       <div 
@@ -63,7 +74,7 @@ export default function Home() {
         style={{marginLeft: (margin*-1 + 800)}}
       >
         <div className="h-100 mt-4 roadmap-container">
-          <Roadmap releases={releases} flags={flags} focusport={observer} pixelsPerDay={pixelsPerDay}  dates={dates}></Roadmap>
+          <Roadmap releases={releases} flags={flags} focusport={observer} markerport={markerObserver} pixelsPerDay={pixelsPerDay}  dates={dates}></Roadmap>
         </div>
 
         <div className="position-fixed">
@@ -80,6 +91,19 @@ export default function Home() {
         setMargin(offset);
     } else {
     }
+  }
+
+  function makeMoreVisible(entries: any) {
+    console.log("makeMoreVisible", entries.length);
+    entries.forEach((entry: IntersectionObserverEntry) => {
+      console.log(entry.isIntersecting, entry.target);
+      if (entry.isIntersecting) {
+        entry.target.classList.add("flag-highlight");
+      } else {
+        entry.target.classList.remove("flag-highlight");
+      }
+    });
+   
   }
 
   function handleValueChange(event: ChangeEvent<HTMLInputElement>) {

@@ -15,7 +15,8 @@ export default function Roadmap(props: {
     flags: FlagModel[],
     dates: DateModel,
     pixelsPerDay: number,
-    focusport: IntersectionObserver
+    focusport: IntersectionObserver,
+    markerport: IntersectionObserver,
 }) {
     let roadMapItems : RoadMapItem[] = [];
     props.releases.forEach(r => roadMapItems.push(r));
@@ -44,7 +45,7 @@ export default function Roadmap(props: {
     return (
         <>
             {roadMapItems.map((r, i) => 
-                <RoadmapItem key={i} isNextRelease={i == indexOfNextRelease}  dates={props.dates} pixelsPerDay={props.pixelsPerDay} roadmapItem={r} focusport={props.focusport} />
+                <RoadmapItem key={i} isNextRelease={i == indexOfNextRelease} markerport={props.markerport} dates={props.dates} pixelsPerDay={props.pixelsPerDay} roadmapItem={r} focusport={props.focusport} />
             )}
         </>)
 }
@@ -55,6 +56,7 @@ export function RoadmapItem(props: {
     pixelsPerDay: number,
     roadmapItem: RoadMapItem,
     focusport: IntersectionObserver,
+    markerport: IntersectionObserver,
     isNextRelease: boolean
 }) {    
     if (props.roadmapItem.itemType == RoadMapItemType.release){
@@ -65,7 +67,7 @@ export function RoadmapItem(props: {
     } else {
         return (
             <>
-                <ReleaseFlag    dates={props.dates} pixelsPerDay={props.pixelsPerDay} flag={props.roadmapItem as FlagModel} />
+                <ReleaseFlag  markerport={props.markerport}   dates={props.dates} pixelsPerDay={props.pixelsPerDay} flag={props.roadmapItem as FlagModel} />
             </>)
     }
 }
@@ -73,22 +75,35 @@ export function RoadmapItem(props: {
 export function ReleaseFlag(props: {
     dates: DateModel,
     pixelsPerDay: number,
-    flag: FlagModel
+    flag: FlagModel,
+    markerport: IntersectionObserver
 }) {
     const ref = useRef<HTMLDivElement>(null);
     
+    useEffect(() => {
+        if (ref.current) {
+            props.markerport.observe(ref.current);
+        }
+        
+        return () => {
+            if (ref.current) {
+                props.markerport.unobserve(ref.current);
+            }
+        }
+    })
+
     return (
         <div  
-            ref={ref} className="transition-400ms fit-content-width p-2 my-2 mr-2 timeline-flag-label" 
+            ref={ref} className={`transition-400ms fit-content-width p-2 my-2 mr-2 timeline-flag-label  ${props.flag.cssClass}`} 
             style={{marginLeft: props.pixelsPerDay * ( (numberOfDays(new Date(props.dates.startDate), new Date(props.flag.startDate)))) }}>
             <div className="d-flex flex-column pl-4 pr-4">
-                <div className="h6">{props.flag.label}</div>
+                <div className="h4">{props.flag.label}</div>
                 <div className="release-date">
                     <i>
                         {months[new Date(props.flag.startDate).getMonth()]} {new Date(props.flag.startDate).getDay()+1}, {new Date(props.flag.startDate).getFullYear()}
                     </i>    
                 </div>
-                <div id="triangle-right"></div>
+                <div id="triangle-right" className={`${props.flag.cssClass}-tip`}></div>
             </div>
         </div>
     )
@@ -101,24 +116,11 @@ export function Release(props: {
     focusport: IntersectionObserver,
     isNextRelease: boolean
 }) {
-    // console.log(props.release);
-    if (props.isNextRelease){
-        console.log('release ' ,props.isNextRelease,  props.release.releaseName);
-    }
     const ref = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
         if (ref.current) {
             props.focusport.observe(ref.current);
-            if (props.isNextRelease) {
-                setTimeout(() => {
-                    window.scrollTo({
-                        top: ref.current.offsetTop,
-                        behavior: 'smooth'
-                    } );
-                    console.log("scrolled")
-                }, 2000);
-            }
         }
         
         return () => {
@@ -131,14 +133,17 @@ export function Release(props: {
     return (
         <div  
             ref={ref} className="release-card-bg release-card fit-content-width p-2 my-2 mr-2 transition-400ms" 
-            style={{marginLeft: props.pixelsPerDay * ((numberOfDays(props.dates.startDate, props.release.startDate))) }}>
+            style={{marginLeft: props.pixelsPerDay * ((numberOfDays(props.dates.startDate, props.release.endDate))) }}>
             <div className="d-flex">
                 <div className="pr-2 h4"><Send /></div>
                 <div className="h4">{props.release.releaseName}</div>
             </div>
             <div className="release-date">
-                <i>
-                    {months[new Date(props.release.startDate).getMonth()]} {new Date(props.release.startDate).getDay()+1}, {new Date(props.release.startDate).getFullYear()}
+                <div className="release-date-indicator"></div>
+                <i className='pl-1'>
+                    {/* {months[new Date(props.release.startDate).getMonth()]} {new Date(props.release.startDate).getDay()+1}, {new Date(props.release.startDate).getFullYear()}
+                    - */}
+                    {months[new Date(props.release.endDate).getMonth()]} {new Date(props.release.endDate).getDay()+1}, {new Date(props.release.endDate).getFullYear()}
                 </i>    
             </div>
             <Feature features={props.release.features}/>

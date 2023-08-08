@@ -1,5 +1,5 @@
-export class FlagModel {
+import { RoadMapItem } from "./RoadMapItem";
+
+export class FlagModel extends RoadMapItem {
     label: string = '';
-    date: Date = new Date();
-    color: string = '';
 }

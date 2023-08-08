@@ -195,6 +195,7 @@ circle {
   position: absolute;
   top: 120%;
   left: -2px;
+  opacity:0.01;
 }
 
 /* .timeline-header {
@@ -202,12 +203,12 @@ circle {
 } */
 
 .timeline-flag {
-  border-left: 6px solid rgba(0, 102, 255, 0.76);
+  border-left: 3px double rgba(0, 102, 255, 0.76);
   height:100vh;
   position:absolute;
   top:30px;
-  /* opacity:0.8; */
-  margin-left:-6px;
+  opacity:0.05;
+  margin-left:-3px;
 }
 
 .timeline-flag-label {
@@ -219,6 +220,7 @@ circle {
   background-color: rgba(0, 102, 255, 0.76);;
   color: white;
   padding-left:0px;
+  opacity:0.2;
   /* left: 6px;; */
 }
 
@@ -287,10 +289,32 @@ circle {
 #triangle-right {
   width: 0;
   height: 0;
-  border-top: 30px solid transparent;
+  border-top: 34px solid transparent;
   border-left: 15px solid rgba(0, 102, 255, 0.76);
-  border-bottom: 28px solid transparent;
+  border-bottom: 34px solid transparent;
   position: absolute;
   left: 100%;
   top: 0px;
+}
+
+.release-date-indicator {
+  height: 16px;
+  width:16px;
+  border-radius: 8px;
+  background-color: #000!important;
+  border: 1px solid #222!important;
+  position:absolute;
+  left:-9px;
+  margin-top:1px;
+}
+
+.flag-highlight {
+  opacity:0.8!important;
+}
+
+.flag1 {
+  background-color: rgba(142,0,200,1)!important;
+}
+.flag1-tip {
+  border-left-color: rgba(142,0,200,1)!important;
 }
