@@ -190,7 +190,7 @@ circle {
 }
 
 .timeline-marker {
-  border-left: 4px #444 dotted;
+  border-left: 1px #444 dotted;
   height: 100vh;
   position: absolute;
   top: 120%;
