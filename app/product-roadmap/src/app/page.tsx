@@ -12,14 +12,15 @@ import { ReleaseModel } from './models/release';
 import { FlagModel } from './models/FlagModel';
 import releasesJson from './releases.json'
 import flagsJson from './flags.json'
+import bg from './../../public/back-texture.png';
 
 export default function Home() {
   const releases: ReleaseModel[] = releasesJson as unknown as ReleaseModel[];
   const flags: FlagModel[] = flagsJson as unknown as FlagModel[];
   // console.log(releases, flags);
 
-  const [margin, setMargin] = useState(0);
-  const [pixelsPerDay, setPixelsPerDay] = useState(1);
+  const [margin, setMargin] = useState();
+  const [pixelsPerDay, setPixelsPerDay] = useState(0.5);
   const [flagsAreVisible, setFlagsVisibility] = useState(true);
   const [releasesAreVisible, setReleaseVisibility] = useState(true);
   const [featuresAreVisible, setFeatureVisibility] = useState(true);
@@ -47,7 +48,11 @@ export default function Home() {
   dates.endDate = new Date(new Date(releases[releases.length-1].endDate).getFullYear() + 2, 11, 31);
   // console.log(dates);
   return (
-    <main className="d-flex flex-column justify-content-start h-100v w-100v body-bg text-white overflow-y-hidden overflow-x-hidden">
+    <main className="d-flex flex-column justify-content-start h-100v w-100v body-bg text-white overflow-y-hidden overflow-x-hidden"  style={{
+      // backgroundImage: ` linear-gradient(45deg, rgba(245,70,66, 0.75), rgba(8,83,156, 0.75)), url(${bg.src})`,
+      backgroundImage: ` linear-gradient(125deg, rgba(0,25,217, 0.85) 0%, rgba(0,0,0, 1) 15%, rgba(0,0,0, 1) 85%, rgba(142,0,200, 0.85) 100%), url(${bg.src})`,
+      // backgroundImage: ` linear-gradient(125deg, rgba(0,25,217, 0.75), rgba(0,0,0, 0.75), rgba(0,0,0, 0.75), rgba(142,0,200, 0.75)), url(${bg.src})`,
+    }}>
       <div className="">
         <TitleBar 
           pixelsPerDay={pixelsPerDay} onPixelPerDayChange={handleValueChange} 
@@ -78,7 +83,10 @@ export default function Home() {
         </div>
 
         <div className="position-fixed">
-          <TimeLine pixelsPerDay={pixelsPerDay} dates={dates} ></TimeLine>
+          <TimeLine pixelsPerDay={pixelsPerDay} dates={dates} 
+            splitInto={pixelsPerDay > 1 ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] : ["Q1", "Q2", "Q3", "Q4"]}
+          
+          ></TimeLine>
         </div>
       </div>
     </main>
@@ -94,9 +102,9 @@ export default function Home() {
   }
 
   function makeMoreVisible(entries: any) {
-    console.log("makeMoreVisible", entries.length);
+    // console.log("makeMoreVisible", entries.length);
     entries.forEach((entry: IntersectionObserverEntry) => {
-      console.log(entry.isIntersecting, entry.target);
+      // console.log(entry.isIntersecting, entry.target);
       if (entry.isIntersecting) {
         entry.target.classList.add("flag-highlight");
       } else {

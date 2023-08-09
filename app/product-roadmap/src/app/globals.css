@@ -28,8 +28,10 @@ body {
 
 .body-bg {
 
-  background: rgb(0,25,217);
+  background-image: url("../../public/back-texture.png");
+  /* background: rgb(0,25,217); */
   background: linear-gradient(125deg, rgba(0,25,217,1) 0%, rgba(0,0,0,1) 15%, rgba(0,0,0,1) 85%, rgba(142,0,200,1) 100%);
+  /* background: linear-gradient(125deg, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 65%, rgba(10,10,10,1) 100%); */
 
 }
 
@@ -317,4 +319,23 @@ circle {
 }
 .flag1-tip {
   border-left-color: rgba(142,0,200,1)!important;
+}
+
+.sub-timeline {
+  width:25%;
+  font-size: small;
+  font-style: italic;
+  position: relative;
+  /* border-left: 1px solid #222; */
+}
+
+.sub-timeline-marker{
+  border-left: 1px solid #222;
+  position: absolute;
+  height: 100%;
+  margin-left: -1px;
+}
+
+.sub-timeline-label {
+  text-align: center;
 }

@@ -3,7 +3,8 @@ import { DateModel } from "./models/RoadMapItem";
 export const timeLines: TimeFrameModel[][]  = [];
 export default function TimeLine(props: {
     dates: DateModel,
-    pixelsPerDay: number
+    pixelsPerDay: number,
+    splitInto: string[],
 }) {
     timeLines.push(getTimeFramesYear(props.dates.startDate, props.dates.endDate));
     return (
@@ -11,9 +12,19 @@ export default function TimeLine(props: {
             {timeLines.map((timeLine, i) => (
                 <div key={i} className="d-flex flex-row flex-nowrap justify-content-start">
                     {timeLine.map((timeFrame, j) => (
-                        <div key={i*100+j} className={`release-card transition-400ms ${j % 2 == 0 ? "timeline-header-bg-even" : "timeline-header-bg-odd"}`} 
+                        <div key={i*100+j} className={`h4 release-card transition-400ms ${j % 2 == 0 ? "timeline-header-bg-even" : "timeline-header-bg-odd"}`} 
                             style={{width: props.pixelsPerDay * numberOfDaysLocal(timeFrame), position: 'absolute', left: props.pixelsPerDay * numberOfDays(props.dates.startDate, timeFrame.startDate) }}>
                             {timeFrame.label}
+                            <div className="flex" >
+                            {
+                                props.splitInto.map((split, idx) => (
+                                    <div key={idx} className="sub-timeline">
+                                        <div className="sub-timeline-marker"></div>
+                                        <div className="sub-timeline-label">{split}</div>
+                                    </div>
+                                ))
+                            }
+                            </div>
                         </div>
                     ))}
                 </div>

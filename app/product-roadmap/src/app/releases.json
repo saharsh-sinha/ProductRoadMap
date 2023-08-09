@@ -2,6 +2,7 @@
   {
     "startDate": "2019-04-15T07:00:00.000Z",
     "endDate": "2019-04-24T07:00:00.000Z",
+    "endDateLabel": "WW18",
     "cssClass": "",
     "itemType": 1,
     "releaseName": "Release 1 was made long time ago",

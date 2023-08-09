@@ -4,7 +4,7 @@
 import { ReleaseModel, FeatureModel, LineItemModel, LineItemType } from '../app/models/release';
 import { Send, Award, Stars, Bug, Flag } from 'react-bootstrap-icons';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { numberOfDays, flags } from './timeline';
+import { numberOfDays } from './timeline';
 import { useEffect, useRef } from 'react';
 import { FlagModel } from './models/FlagModel';
 import { DateModel, RoadMapItem, RoadMapItemType } from './models/RoadMapItem';
@@ -100,7 +100,8 @@ export function ReleaseFlag(props: {
                 <div className="h4">{props.flag.label}</div>
                 <div className="release-date">
                     <i>
-                        {months[new Date(props.flag.startDate).getMonth()]} {new Date(props.flag.startDate).getDay()+1}, {new Date(props.flag.startDate).getFullYear()}
+                        {/* {props.flag.endDateLabel} */}
+                        { (!props.flag.startDateLabel || props.flag.startDateLabel == "") ? `${months[new Date(props.flag.startDate).getMonth()]} ${new Date(props.flag.startDate).getDay()+1} ${new Date(props.flag.startDate).getFullYear()}` : props.flag.startDateLabel}
                     </i>    
                 </div>
                 <div id="triangle-right" className={`${props.flag.cssClass}-tip`}></div>
@@ -141,9 +142,7 @@ export function Release(props: {
             <div className="release-date">
                 <div className="release-date-indicator"></div>
                 <i className='pl-1'>
-                    {/* {months[new Date(props.release.startDate).getMonth()]} {new Date(props.release.startDate).getDay()+1}, {new Date(props.release.startDate).getFullYear()}
-                    - */}
-                    {months[new Date(props.release.endDate).getMonth()]} {new Date(props.release.endDate).getDay()+1}, {new Date(props.release.endDate).getFullYear()}
+                    { (!props.release.endDateLabel || props.release.endDateLabel == "") ? `${months[new Date(props.release.endDate).getMonth()]} ${new Date(props.release.endDate).getDay()+1} ${new Date(props.release.endDate).getFullYear()}` : props.release.endDateLabel}
                 </i>    
             </div>
             <Feature features={props.release.features}/>
@@ -151,7 +150,8 @@ export function Release(props: {
     )
 }
 
-const months  = {
+
+export const months  = {
     0: 'Jan',
     1: 'Feb',
     2: 'Mar',
@@ -165,7 +165,6 @@ const months  = {
     10: 'Nov',
     11: 'Dec',
 }
-
 
 export function Feature(props: {
     features: FeatureModel[]
