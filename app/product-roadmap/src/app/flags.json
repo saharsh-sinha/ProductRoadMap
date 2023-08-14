@@ -1,5 +1,6 @@
 [
   {
+    "today": false,
     "label": "flag 0",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -11,6 +12,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 1",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -19,6 +21,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 2",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -28,6 +31,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 3",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -36,6 +40,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 4",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -45,6 +50,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 5",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -53,15 +59,17 @@
     "itemType": 2
   },
   {
-    "label": "flag 6",
-    "date": "2023-08-07T05:27:27.563Z",
+    "today": false,
+    "label": "This one",
+    "date": "2023-01-01T07:00:00.000Z",
     "color": "",
-    "startDate": "2023-05-23T07:00:00.000Z",
-    "endDate": "2023-05-27T07:00:00.000Z",
+    "startDate": "2023-01-01T07:00:00.000Z",
+    "endDate": "2023-01-01T07:00:00.000Z",
     "itemType": 2,
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 7",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -70,6 +78,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 8",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -79,6 +88,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 9",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -87,6 +97,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 10",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -96,6 +107,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 11",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -104,6 +116,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 12",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -112,6 +125,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 13",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -121,6 +135,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 14",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -129,6 +144,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 15",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -137,6 +153,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 16",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -146,6 +163,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 17",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -154,6 +172,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 18",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -162,6 +181,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 19",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -171,6 +191,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 20",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -179,6 +200,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 21",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -187,6 +209,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 22",
     "date": "2023-08-07T05:27:27.563Z",
     "color": "",
@@ -196,6 +219,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 23",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",
@@ -204,6 +228,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 24",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",
@@ -212,6 +237,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 25",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",
@@ -221,6 +247,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 26",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",
@@ -229,6 +256,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 27",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",
@@ -237,6 +265,7 @@
     "itemType": 2
   },
   {
+    "today": false,
     "label": "flag 28",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",
@@ -246,6 +275,7 @@
     "cssClass": "flag1"
   },
   {
+    "today": false,
     "label": "flag 29",
     "date": "2023-08-07T05:27:27.564Z",
     "color": "",

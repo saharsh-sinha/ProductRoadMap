@@ -404,12 +404,12 @@
     "cssClass": "",
     "itemType": 1,
     "releaseName": "Release 6",
-    "releaseDescription": "Release 6 description",
+    "releaseDescription": "<i>Release 6 description</i>",
     "url": "",
     "features": [
       {
         "featureName": "Release 6 Feature 1",
-        "featureDescription": "Release 6 Feature 1 description",
+        "featureDescription": "<table style='border:1px solid black'><tr><td style='border:1px solid black'>Test 1</td><td style='border:1px solid black'>Test 2</td></tr></table><i>Release 6 description</i> Release 6 Feature 1 description",
         "url": "",
         "lineItems": [
           {

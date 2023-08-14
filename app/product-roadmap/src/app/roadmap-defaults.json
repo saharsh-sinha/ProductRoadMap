@@ -1,0 +1,18 @@
+{
+    "pageTitle": "FLAME",
+    "browserTitle": "Flame Roadmap",
+    "defaultZoomLevel": 2,
+    "zoomLevelTimelinesMap": {
+        "1": ["H1", "H2"],
+        "2": ["Q1", "Q2", "Q3", "Q4"],
+        "3": ["Q1", "Q2", "Q3", "Q4"],
+        "4": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "5": [ "Jan 1", "Jan 15", "Feb 1", "Feb 15", "Mar 1", "Mar 15", "Apr 1", "Apr 15", "May 1", "May 15", "Jun 1", "Jun 15", "Jul 1", "Jul 15", "Aug 1", "Aug 15", "Sep 1", "Sep 15", "Oct 1", "Oct 15", "Nov 1", "Nov 15", "Dec 1", "Dec 15"]
+    },
+    "flagsAreVisible": true,
+    "releasesAreVisible": true,
+    "featuresAreVisible": true,
+    "lineItemsAreVisible": true,
+    "dateMarkersAreVisible": true,
+    "darkModeIsVisible": false
+}

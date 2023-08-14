@@ -1,38 +1,62 @@
 
 "use client";
 
-import Image from 'next/image'
 import Roadmap from './roadmap'
-import TimeLine from './timeline'
+import TimeLine, { TimeFrameModel } from './timeline'
 import TitleBar from './titlebar'
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import RoadmapMarkers from './roadmap-markers';
-import { DateModel } from './models/RoadMapItem';
+import { DateModel, RoadMapItem, RoadMapItemType } from './models/RoadMapItem';
 import { ReleaseModel } from './models/release';
 import { FlagModel } from './models/FlagModel';
 import releasesJson from './releases.json'
 import flagsJson from './flags.json'
+import roadmapDefaultsJson from './roadmap-defaults.json'
 import bg from './../../public/back-texture.png';
+import { ArrowLeftCircleFill, ArrowRightCircleFill } from 'react-bootstrap-icons'
 
 export default function Home() {
   const releases: ReleaseModel[] = releasesJson as unknown as ReleaseModel[];
-  const flags: FlagModel[] = flagsJson as unknown as FlagModel[];
-  // console.log(releases, flags);
+  const flags = flagsJson ;
+  const [todayWasFlagged, setTodayWasFlagged] = useState(false);
+  const [todayWasBroughtIntoView, setTodayWasBroughtIntoView] = useState(false);
+  if (!todayWasFlagged) {
+    flags.push({
+      "label": "Today",
+      "date": new Date().toISOString(),
+      "color": "",
+      "startDate": new Date().toISOString(),
+      "startDateLabel": new Date().toDateString(),
+      "endDate": new Date().toISOString(),
+      "endDateLabel": new Date().toDateString(),
+      "itemType": 2,
+      "cssClass": "todays-flag",
+      "today": true
+    });
+    setTodayWasFlagged(true);
+  }
 
-  const [margin, setMargin] = useState();
-  const [pixelsPerDay, setPixelsPerDay] = useState(0.5);
-  const [flagsAreVisible, setFlagsVisibility] = useState(true);
-  const [releasesAreVisible, setReleaseVisibility] = useState(true);
-  const [featuresAreVisible, setFeatureVisibility] = useState(true);
-  const [lineItemsAreVisible, setLineItemVisibility] = useState(false);
+  const leftMargin = 500; 
+  const [margin, setMargin] = useState(leftMargin);
+  const [zoomLevel, setZoomLevel] = useState(roadmapDefaultsJson.defaultZoomLevel);
+  const [pixelsPerDay, setPixelsPerDay] = useState(zoomLevelToPixelsPerDay[zoomLevel]);
+  const [flagsAreVisible, setFlagsVisibility] = useState(roadmapDefaultsJson.flagsAreVisible);
+  const [releasesAreVisible, setReleaseVisibility] = useState(roadmapDefaultsJson.releasesAreVisible);
+  const [featuresAreVisible, setFeatureVisibility] = useState(roadmapDefaultsJson.featuresAreVisible);
+  const [lineItemsAreVisible, setLineItemVisibility] = useState(roadmapDefaultsJson.lineItemsAreVisible);
+  const [dateMarkersAreVisible, setDateMarkerVisibility] = useState(roadmapDefaultsJson.dateMarkersAreVisible);
+  const [darkModeIsVisible, setDarkModeVisibility] = useState(roadmapDefaultsJson.darkModeIsVisible);
+  const [todaysBoundingRect, setTodaysBoundingRect] = useState();
+  const [timeLines, setTimeLines] = useState(new Array<TimeFrameModel>());
   // const [releases, setReleases] = useState(new Array<ReleaseModel>());
   // const [flags, setFlags] = useState(new Array<FlagModel>());
 
-  let dates =new DateModel(); 
+  let dates =new DateModel();
+  const mapRef = useRef<HTMLDivElement>(null); 
   
   let observerOptions = {
     root: null,
-    rootMargin: "-38% 1000% -60% 1000%",
+    rootMargin: "-38% 0% -60% 0%",
     threshold: 0,
   };
   let observer = new IntersectionObserver(moveIntoFocus, observerOptions);
@@ -44,67 +68,146 @@ export default function Home() {
   };
   let markerObserver = new IntersectionObserver(makeMoreVisible, markerObserverOptions);
 
-  dates.startDate = new Date(new Date(releases[0].startDate).getFullYear() - 2, new Date(releases[0].startDate).getMonth(), new Date(releases[0].startDate).getDay());
-  dates.endDate = new Date(new Date(releases[releases.length-1].endDate).getFullYear() + 2, 11, 31);
-  // console.log(dates);
-  return (
-    <main className="d-flex flex-column justify-content-start h-100v w-100v body-bg text-white overflow-y-hidden overflow-x-hidden"  style={{
-      // backgroundImage: ` linear-gradient(45deg, rgba(245,70,66, 0.75), rgba(8,83,156, 0.75)), url(${bg.src})`,
-      backgroundImage: ` linear-gradient(125deg, rgba(0,25,217, 0.85) 0%, rgba(0,0,0, 1) 15%, rgba(0,0,0, 1) 85%, rgba(142,0,200, 0.85) 100%), url(${bg.src})`,
-      // backgroundImage: ` linear-gradient(125deg, rgba(0,25,217, 0.75), rgba(0,0,0, 0.75), rgba(0,0,0, 0.75), rgba(142,0,200, 0.75)), url(${bg.src})`,
-    }}>
-      <div className="">
-        <TitleBar 
-          pixelsPerDay={pixelsPerDay} onPixelPerDayChange={handleValueChange} 
-          flagsAreVisible={flagsAreVisible} onFlagVisibilityChange={handleFlagVisibilityChange} 
-          releasesAreVisible={releasesAreVisible} onReleaseVisibilityChange={handleReleaseVisibilityChange} 
-          featuresAreVisible={featuresAreVisible} onFeatureVisibilityChange={handleFeatureVisibilityChange} 
-          lineItemsAreVisible={lineItemsAreVisible} onLineItemVisibilityChange={handleLineItemVisibilityChange} 
-        />
-        
-      </div>
-      
-      <div 
-        style={{marginLeft: (margin*-1 + 800)}}
-        className='transition-400ms'>
-        <RoadmapMarkers
-          flags={flags}  
-          pixelsPerDay={pixelsPerDay}  
-          dates={dates}
-          focusport={markerObserver}
-        ></RoadmapMarkers>
-      </div>
-      <div 
-        className="overflow-y-auto overflow-x-auto d-flex flex-column fit-content-width map-body"
-        style={{marginLeft: (margin*-1 + 800)}}
-      >
-        <div className="h-100 mt-4 roadmap-container">
-          <Roadmap releases={releases} flags={flags} focusport={observer} markerport={markerObserver} pixelsPerDay={pixelsPerDay}  dates={dates}></Roadmap>
-        </div>
+  let roadMapItems : RoadMapItem[] = [];
+  releases.forEach(r => roadMapItems.push(r));
+  (flags as unknown as FlagModel[]).forEach(f => roadMapItems.push(f));
+  
+  roadMapItems.sort((a, b) => {
+    if (a.startDate < b.startDate) return -1;
+    else if (a.startDate > b.startDate) return 1;
+    else {
+        if (a.itemType == RoadMapItemType.flag) return -1;
+        else if (b.itemType == RoadMapItemType.flag) return 1;
+        else return 0 
+    };
 
-        <div className="position-fixed">
-          <TimeLine pixelsPerDay={pixelsPerDay} dates={dates} 
-            splitInto={pixelsPerDay > 1 ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"] : ["Q1", "Q2", "Q3", "Q4"]}
-          
-          ></TimeLine>
+  });
+  dates.startDate = new Date(new Date(roadMapItems[0].startDate).getFullYear() - 2, 0, 1);
+  dates.endDate = new Date(new Date(roadMapItems[roadMapItems.length-1].endDate).getFullYear() + 2, 11, 31);
+
+  if (timeLines && timeLines.length == 0) {
+    setTimeLines(getTimeFramesYear(dates.startDate, dates.endDate));
+  }
+
+  console.log('dates', dates);
+
+  useEffect(() => {
+    if (mapRef.current && !todayWasBroughtIntoView && todaysBoundingRect != undefined) {
+      // console.log("ref todaysBoundingRect", todaysBoundingRect);
+      focusOnToday();
+      setTodayWasBroughtIntoView(true);
+  }
+  });
+
+  const focusOnToday = () => {
+    setMargin(todaysBoundingRect?.x);
+    setTimeout(() => {
+      mapRef.current?.scrollTo({ "top": todaysBoundingRect?.y - 250, "behavior": "smooth"});
+    }, 500);
+  }
+
+  const bubbleTodaysBoundingRect = (boundingRect: any) => {
+    if (!todayWasBroughtIntoView){
+      setTodaysBoundingRect(boundingRect);
+    }
+  }
+
+  return (
+    <>
+      <main className={`
+        d-flex flex-column justify-content-start h-100v w-100v
+        bg-skin-fill text-skin-base 
+        overflow-y-hidden overflow-x-hidden transition-400ms ${darkModeIsVisible ? "theme-dark" : ""}`}  style={{
+        paddingTop:"1px"
+        // backgroundImage: ` linear-gradient(125deg, rgba(0,25,217, 0.85) 0%, rgba(0,0,0, 1) 15%, rgba(0,0,0, 1) 85%, rgba(142,0,200, 0.85) 100%), url(${bg.src})`,
+      }}>
+        
+        
+        <div 
+          style={{marginLeft: (margin*-1 + leftMargin)}}
+          className='transition-400ms'>
+          <RoadmapMarkers
+            flags={flags as unknown as FlagModel[]}  
+            pixelsPerDay={pixelsPerDay}  
+            dates={dates}
+            focusport={markerObserver} 
+            leftOffset={margin}
+            timeLines={timeLines}/>
         </div>
-      </div>
-    </main>
+        <div 
+          ref={mapRef}
+          className="overflow-y-auto overflow-x-auto d-flex flex-column map-body"
+          // style={{marginLeft: (margin*-1 + leftMargin)}}
+        >
+          <div className="h-100 mt-4 roadmap-container">
+            <Roadmap 
+              bubbleTodaysBoundingRect={bubbleTodaysBoundingRect} 
+              releases={releases} 
+              flags={flags as unknown as FlagModel[]} 
+              roadMapItems={roadMapItems} 
+              focusport={observer} 
+              markerport={markerObserver} 
+              pixelsPerDay={pixelsPerDay} 
+              dates={dates}
+              flagsAreVisible={flagsAreVisible} 
+              releasesAreVisible={releasesAreVisible} 
+              featuresAreVisible={featuresAreVisible} 
+              lineItemsAreVisible={lineItemsAreVisible} 
+              dateMarkersAreVisible={dateMarkersAreVisible} 
+              leftOffset={margin} />
+          </div>
+
+          <div className="position-fixed d-flex flex-column">
+            <TimeLine 
+              pixelsPerDay={pixelsPerDay} 
+              dates={dates} 
+              splitInto={roadmapDefaultsJson.zoomLevelTimelinesMap[zoomLevel.toString()]} 
+              leftOffset={margin}
+              timeLines={timeLines}
+            />
+            <div className="">
+              <TitleBar 
+                zoomLevel={zoomLevel} onZoomLevelChange={handleZoomLevelChange} 
+                flagsAreVisible={flagsAreVisible} onFlagVisibilityChange={handleFlagVisibilityChange} 
+                releasesAreVisible={releasesAreVisible} onReleaseVisibilityChange={handleReleaseVisibilityChange} 
+                featuresAreVisible={featuresAreVisible} onFeatureVisibilityChange={handleFeatureVisibilityChange} 
+                lineItemsAreVisible={lineItemsAreVisible} onLineItemVisibilityChange={handleLineItemVisibilityChange} 
+                dateMarkersAreVisible={dateMarkersAreVisible} onDateMarkersVisibilityChange={handleDateMarkersAreVisibleVisibilityChange} 
+                darkMode={darkModeIsVisible} onDarkModeChange={handleDarkModeChange} 
+                setTodayWasBroughtIntoView={handleSetTodayWasBroughtIntoView}
+                goToHome={focusOnToday}
+              />
+              
+          </div>
+          </div>
+        </div>
+        <button className='text-skin-base cast-a-shadow' onClick={scrollUp} style={{position: "fixed", top: "48vh", left: "1vw"}}><h1><ArrowLeftCircleFill/></h1></button>
+        <button className='text-skin-base cast-a-shadow' onClick={scrollDown} style={{position: "fixed", top: "48vh", right: "1vw"}}><h1><ArrowRightCircleFill /></h1></button>
+      </main>
+      
+    </>
+    
   )
+
+  function scrollUp() {
+    mapRef.current?.scrollTo({ "top": mapRef.current?.scrollTop  - 400, "behavior": "smooth" });
+  }
+
+  function scrollDown() {
+    mapRef.current?.scrollTo({ "top": mapRef.current?.scrollTop  + 400, "behavior": "smooth" });
+  }
 
   function moveIntoFocus(entries: any) {
     const [entry] = entries;
     if (entry.isIntersecting) {
-        let offset = entry.target.style.marginLeft.replace('px','');
-        setMargin(offset);
+        let offset = entry.target.dataset.days;
+        setMargin(offset - 500);
     } else {
     }
   }
 
   function makeMoreVisible(entries: any) {
-    // console.log("makeMoreVisible", entries.length);
     entries.forEach((entry: IntersectionObserverEntry) => {
-      // console.log(entry.isIntersecting, entry.target);
       if (entry.isIntersecting) {
         entry.target.classList.add("flag-highlight");
       } else {
@@ -114,34 +217,65 @@ export default function Home() {
    
   }
 
-  function handleValueChange(event: ChangeEvent<HTMLInputElement>) {
-    let mappedValue = rangeToPixelsPerDay[event.target.value];
-    setPixelsPerDay(mappedValue);
+  function handleZoomLevelChange(event: ChangeEvent<HTMLInputElement>) {
+    setZoomLevel(event.target.value);
+    let mappedValue = zoomLevelToPixelsPerDay[zoomLevel];
+    setPixelsPerDay(mappedValue) ;
+  }
+
+  function handleSetTodayWasBroughtIntoView() {
+    setTodayWasBroughtIntoView(true);
   }
 
   function handleFlagVisibilityChange(event: ChangeEvent<HTMLInputElement>) {
-    console.log('new val', event.target.value);
-    setFlagsVisibility(!(event.target.value as unknown as boolean));
+    setFlagsVisibility(!flagsAreVisible);
+    console.log('new val setFlagsVisibility', flagsAreVisible);
   }
 
   function handleReleaseVisibilityChange(event: ChangeEvent<HTMLInputElement>) {
-    console.log('new val', event.target.value);
-    setReleaseVisibility(!(event.target.value as unknown as boolean));
+    setReleaseVisibility(!releasesAreVisible);
+    console.log('new val setReleaseVisibility', releasesAreVisible);
   }
 
   function handleFeatureVisibilityChange(event: ChangeEvent<HTMLInputElement>) {
-    console.log('new val', event.target.value);
-    setFeatureVisibility(!(event.target.value as unknown as boolean));
+    setFeatureVisibility(!featuresAreVisible);
+    console.log('new val setFeatureVisibility', featuresAreVisible);
   }
 
   function handleLineItemVisibilityChange(event: ChangeEvent<HTMLInputElement>) {
-    console.log('new val', event.target.value);
-    setLineItemVisibility(!(event.target.value as unknown as boolean));
+    setLineItemVisibility(!lineItemsAreVisible);
+    console.log('new val setLineItemVisibility', lineItemsAreVisible);
+  }
+
+  function handleDateMarkersAreVisibleVisibilityChange(event: ChangeEvent<HTMLInputElement>) {
+    setDateMarkerVisibility(!dateMarkersAreVisible);
+    console.log('new val setLineItemVisibility', lineItemsAreVisible);
+  }
+
+  function handleDarkModeChange(event: ChangeEvent<HTMLInputElement>) {
+    setDarkModeVisibility(!darkModeIsVisible);
   }
   
+  function getTimeFramesYear(startDate: Date, endDate: Date): TimeFrameModel[] {
+    var timeFrames: TimeFrameModel[] = [];
+    var newTimeFrame = startDate;
+    var year = newTimeFrame.getFullYear();
+    while (newTimeFrame <= endDate){
+        timeFrames.push(
+            new TimeFrameModel(
+                new Date(newTimeFrame.getTime()) ,
+                new Date(year, 11, 31),
+                year.toString(),
+        ));
+        year++;
+        newTimeFrame = new Date(year, 0, 1);
+    }
+    return timeFrames;
 }
 
-const rangeToPixelsPerDay = {
+}
+
+const zoomLevelToPixelsPerDay = {
   0: 0.25,
   1: 0.5,
   2: 1,

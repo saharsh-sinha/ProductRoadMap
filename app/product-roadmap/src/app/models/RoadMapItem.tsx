@@ -1,22 +1,9 @@
 export class DateModel {
-    public startDateLabel: string = "asd";
-    public endDateLabel: string = "fgh";
+    public startDateLabel: string = "";
+    public endDateLabel: string = "";
     
     public startDate: Date = new Date();
     public endDate: Date = new Date();
-
-    // public getStartDateLabel(): string { return (this.startDateLabel == "" ? this.getDateString(this.startDate) : this.startDateLabel) };
-    // public set startDateLabel(value: string) {  this.startDateLabel = value; };
-
-    // public getEndDateLabel(): string { 
-    //     console.log(this.endDateLabel, this.endDate); 
-    //     return (this.endDateLabel == "" ? this.getDateString(this.endDate) : this.endDateLabel); 
-    // };
-    // public set endDateLabel(value: string) {  this._endDateLabel = value; };
-
-    private getDateString(date: Date): string {
-        return `${months[new Date(date).getMonth()]} ${new Date(date).getDay()+1} ${new Date(date).getFullYear()}`;
-    }
 }
 
 export class RoadMapItem extends DateModel {
