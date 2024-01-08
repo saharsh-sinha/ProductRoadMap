@@ -2,7 +2,7 @@
 "use client";
 
 import { ReleaseModel, FeatureModel, LineItemModel, LineItemType } from '../app/models/release';
-import { Send, Award, Stars, Bug } from 'react-bootstrap-icons';
+import { Send, Award, Stars, Bug, Toggle2Off, Bullseye, CaretRight } from 'react-bootstrap-icons';
 import { OverlayTrigger, Popover } from 'react-bootstrap';
 import { numberOfDays } from './timeline';
 import { useEffect, useRef, useState } from 'react';
@@ -138,21 +138,40 @@ export function ReleaseFlag(props: {
     return (
         <div  
             ref={ref} 
-            className={`transition-400ms fit-content-width pl-2 pr-2 my-2 mr-2 timeline-flag-label ${props.flag.cssClass}`} 
+            className={`transition-400ms fit-content-width pl-2 pr-2 my-2 mr-2 timeline-flag-label`} 
             style={{
                 // transitionDelay: (props.ordinal * 20) + "ms",
                 marginLeft: 0, 
+                border: "0px solid green",
                 paddingTop: "0px!important", 
+                paddingLeft: "20px!important", 
                 paddingBottom: "0px!important",
                 left: getLeftOffset(flagDivWidth, props, daysSinceStart) + width
             }}>
-            <div className="text-skin-base d-flex flex-column pl-4 pr-4">
-                <div className="h4">{props.flag.label}</div>
-                {props.dateMarkersAreVisible && <div className="release-date">
-                    <i>
-                        { (!props.flag.startDateLabel || props.flag.startDateLabel == "") ? `${months[new Date(props.flag.startDate).getMonth()]} ${new Date(props.flag.startDate).getDate()} ${new Date(props.flag.startDate).getFullYear()}` : props.flag.startDateLabel}
-                    </i>    
-                </div>}
+
+            {!props.flag.today &&
+                <Toggle2Off className={`${props.flag.cssClass} flag-marker`} />
+            }
+
+            {props.flag.today &&
+                <Bullseye className={`${props.flag.cssClass} flag-marker`} />
+            }
+
+            <div 
+                className={`${(props.flag.cssClass == "" || props.flag.cssClass) ? "text-skin-base" : "" } d-flex flex-column px-4`}
+                style={{margin: '5px' }}>
+
+                <div className="h5">{props.flag.label}</div>
+                <div>
+                    <div className='d-flex flex-row'>
+                        {props.dateMarkersAreVisible && <div className="release-date">
+                            <i>
+                                { (!props.flag.startDateLabel || props.flag.startDateLabel == "") ? `${months[new Date(props.flag.startDate).getMonth()]} ${new Date(props.flag.startDate).getDate()} ${new Date(props.flag.startDate).getFullYear()}` : props.flag.startDateLabel}
+                            </i>    
+                        </div>}
+                        <div style={{ lineHeight: '11px', top: '-7px', fontSize: 14, fontStyle: 'italic', position: 'relative', paddingLeft: '10px'}}>{props.flag.subLabel}</div>
+                    </div>
+                </div>
                 {/* <div id="triangle-right" className={`${props.flag.cssClass}-tip`}></div> */}
             </div>
         </div>
@@ -266,7 +285,7 @@ export function Feature(props: {
             (<div key={i} className={`pl-2 text-skin-base`} >
                 {(props.featuresAreVisible &&
                 <div className="d-flex">
-                    <div className="h5 pr-2"><Award /></div>
+                    <div className="h5 pr-2"><CaretRight /></div>
                     <DangerousPopover url={feature.url} dispalyText={feature.featureName} popoverContent={feature.featureDescription} displayTextClass='h6'/>
                 </div>
                 )} 
@@ -296,7 +315,7 @@ export function DangerousPopover(props: {
             </Popover.Body>
             </Popover>
         }>
-        <div className={props.displayTextClass}><a href={props.url} className="feature-name text-skin-base">{props.dispalyText}</a></div>
+        <div className={props.displayTextClass}><a href={props.url} target="_blank" className="feature-name text-skin-base">{props.dispalyText}</a></div>
     </OverlayTrigger>)
 }
 

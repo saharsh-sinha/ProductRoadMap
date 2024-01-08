@@ -6,15 +6,15 @@
   :root {
     --color-text-base: #111;
     --color-text-muted: #444444;
-    --color-text-inverted: #cccccc;
-    --color-fill: #eeeeee;
+    --color-text-inverted: #fffdf8;
+    --color-fill: #fffdf8;
     --color-button-accent: #4bb7ff;
     --color-button-accent-hover: #1cddff;
     --color-button-muted: #9fd9ff;
     --color-border: #222;
   }
   .theme-dark {
-    --color-text-base: #cccccc;
+    --color-text-base: #ffefc7;
     --color-text-muted: #aaaaaa;
     --color-text-inverted: #222222;
     --color-fill: #222222;
@@ -240,20 +240,30 @@ circle {
   opacity:0.05;
 }
 
-.timeline-flag-label {
+.timeline-flag-label_BAK {
   width: fit-content;
   /* position: -webkit-sticky; */
   position: sticky;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 102, 255, 0.76);;
-  color: white;
+  /* background-color: rgba(0, 102, 255, 0.76);;
+  color: white; */
   padding-left:0px;
-  opacity:0.2;
+  /* opacity:0.2; */
   padding-top: 0px!important;
   padding-bottom: 0px!important;
-  border-radius: 0px 25px 25px 0px;;
+  /* border-radius: 0px 25px 25px 0px;; */
   /* left: 6px;; */
+}
+
+.timeline-flag-label {
+  width: fit-content;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  padding-left:0px;
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
 }
 
 .release-date {
@@ -354,20 +364,17 @@ circle {
 }
 
 .flag-highlight {
-  opacity:0.8!important;
+  opacity:1!important;
 }
 
-.flag1 {
+/* .flag1 {
   background-color: rgba(142,0,200,1)!important;
-}
-.flag1-tip {
-  border-left-color: rgba(142,0,200,1)!important;
-}
+} */
 
 .todays-flag {
-  background-color: white!important;
-  color:#222;
-  font-weight:900;
+  /* background-color: white!important; */
+  color:rgb(25,151,0);
+  /* font-weight:900; */
   
 }
 .todays-flag-tip {
@@ -400,4 +407,24 @@ circle {
 
 .cast-a-shadow {
   filter: drop-shadow(1px 1px 2px #888);
+}
+
+.flag-marker {
+  position: absolute;
+  font-size: 25px;
+  top: 3px;
+  transform: rotateZ(0deg);
+}
+
+.flag-marker-dash {
+  border-top-width: 4px;
+  border-top-style: solid;
+  width: 15px;
+  position: absolute;
+  left: 6px;
+}
+
+.popover {
+  max-width: 75vw;
+  width: fit-content;
 }

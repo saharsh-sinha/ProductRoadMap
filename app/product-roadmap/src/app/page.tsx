@@ -31,12 +31,13 @@ export default function Home() {
       "endDateLabel": new Date().toDateString(),
       "itemType": 2,
       "cssClass": "todays-flag",
-      "today": true
+      "today": true,
+      "subLabel": ""
     });
     setTodayWasFlagged(true);
   }
 
-  const leftMargin = 500; 
+  const leftMargin = document.body.offsetWidth * 0.15; 
   const [margin, setMargin] = useState(leftMargin);
   const [zoomLevel, setZoomLevel] = useState(roadmapDefaultsJson.defaultZoomLevel);
   const [pixelsPerDay, setPixelsPerDay] = useState(zoomLevelToPixelsPerDay[zoomLevel]);
@@ -73,8 +74,8 @@ export default function Home() {
   (flags as unknown as FlagModel[]).forEach(f => roadMapItems.push(f));
   
   roadMapItems.sort((a, b) => {
-    if (a.startDate < b.startDate) return -1;
-    else if (a.startDate > b.startDate) return 1;
+    if (a.endDate < b.endDate) return -1;
+    else if (a.endDate > b.endDate) return 1;
     else {
         if (a.itemType == RoadMapItemType.flag) return -1;
         else if (b.itemType == RoadMapItemType.flag) return 1;
@@ -123,7 +124,7 @@ export default function Home() {
       }}>
         
         
-        <div 
+        {/* <div 
           style={{marginLeft: (margin*-1 + leftMargin)}}
           className='transition-400ms'>
           <RoadmapMarkers
@@ -133,7 +134,7 @@ export default function Home() {
             focusport={markerObserver} 
             leftOffset={margin}
             timeLines={timeLines}/>
-        </div>
+        </div> */}
         <div 
           ref={mapRef}
           className="overflow-y-auto overflow-x-auto d-flex flex-column map-body"
@@ -161,7 +162,7 @@ export default function Home() {
             <TimeLine 
               pixelsPerDay={pixelsPerDay} 
               dates={dates} 
-              splitInto={roadmapDefaultsJson.zoomLevelTimelinesMap[zoomLevel.toString()]} 
+              splitInto={roadmapDefaultsJson.zoomLevelTimelinesMap[zoomLevelToPixelsPerDay[zoomLevel].toString()]} 
               leftOffset={margin}
               timeLines={timeLines}
             />
@@ -201,7 +202,7 @@ export default function Home() {
     const [entry] = entries;
     if (entry.isIntersecting) {
         let offset = entry.target.dataset.days;
-        setMargin(offset - 500);
+        setMargin(offset - leftMargin);
     } else {
     }
   }
@@ -277,10 +278,64 @@ export default function Home() {
 
 const zoomLevelToPixelsPerDay = {
   0: 0.25,
+  0.1: 0.25,
+  0.2: 0.25,
+  0.3: 0.25,
+  0.4: 0.25,
+  0.5: 0.25,
+  0.6: 0.25,
+  0.7: 0.25,
+  0.8: 0.25,
+  0.9: 0.25,
   1: 0.5,
+  1.1: 0.5,
+  1.2: 0.5,
+  1.3: 0.5,
+  1.4: 0.5,
+  1.5: 0.5,
+  1.6: 0.5,
+  1.7: 0.5,
+  1.8: 0.5,
+  1.9: 0.5,
   2: 1,
+  2.1: 1,
+  2.2: 1,
+  2.3: 1,
+  2.4: 1,
+  2.5: 1,
+  2.6: 1,
+  2.7: 1,
+  2.8: 1,
+  2.9: 1,
   3: 2,
+  3.1: 2,
+  3.2: 2,
+  3.3: 2,
+  3.4: 2,
+  3.5: 2,
+  3.6: 2,
+  3.7: 2,
+  3.8: 2,
+  3.9: 2,
   4: 3,
-  5: 5
+  4.1: 3,
+  4.2: 3,
+  4.3: 3,
+  4.4: 3,
+  4.5: 3,
+  4.6: 3,
+  4.7: 3,
+  4.8: 3,
+  4.9: 3,
+  5: 5,
+  5.1: 5,
+  5.2: 5,
+  5.3: 5,
+  5.4: 5,
+  5.5: 5,
+  5.6: 5,
+  5.7: 5,
+  5.8: 5,
+  5.9: 5,
 };
   

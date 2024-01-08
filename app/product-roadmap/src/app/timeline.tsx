@@ -29,7 +29,7 @@ export default function TimeLine(props: {
                         style={{
                             width: props.pixelsPerDay * numberOfDaysLocal(timeFrame), 
                             position: 'absolute', 
-                            transitionDelay: (i*50) + "ms",
+                            transitionDelay: (i*10) + "ms",
                             left: getLeftOffset(divWidth, props, (props.pixelsPerDay * numberOfDays(props.dates.startDate, timeFrame.startDate)))
                         }}>
                         <span className="text-skin-base ">{timeFrame.label}</span>

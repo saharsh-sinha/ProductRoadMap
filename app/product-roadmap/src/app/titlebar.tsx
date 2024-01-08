@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { OverlayTrigger } from 'react-bootstrap';
-import { Send, Award, BarChartSteps, Justify, ZoomIn, ZoomOut, Flag, Sliders2, House, Calendar2CheckFill, MoonStarsFill } from 'react-bootstrap-icons';
+import { Send, Award, BarChartSteps, Justify, ZoomIn, ZoomOut, Flag, Sliders2, House, Calendar2CheckFill, MoonStarsFill, Bullseye, Sliders } from 'react-bootstrap-icons';
 import roadmapDefaultsJson from './roadmap-defaults.json'
 
 export default function TitleBar(props: {
@@ -27,7 +27,7 @@ export default function TitleBar(props: {
         </div>
         <div className="d-flex flex-row flex-nowrap justify-content-end control-buttons">
             
-           <button className="h3 cast-a-shadow " onClick={() => props.goToHome()}><b><House /></b></button>
+           <button className="h3 cast-a-shadow " onClick={() => props.goToHome()}><b><Bullseye /></b></button>
            <OverlayTrigger
                 placement={'left'}
                 show={show}
@@ -38,14 +38,14 @@ export default function TitleBar(props: {
                             <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><Flag className="mr-3" /> Flags </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onFlagVisibilityChange} checked={props.flagsAreVisible} /></div></div>
                             <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><Send className="mr-3" /> Release Names </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onReleaseVisibilityChange} checked={props.releasesAreVisible} /></div></div>
                             <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><Award className="mr-3" /> Features </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onFeatureVisibilityChange} checked={props.featuresAreVisible} /></div></div>
-                            <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><Justify className="mr-3" /> Line Items </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onLineItemVisibilityChange} checked={props.lineItemsAreVisible} /></div></div>
+                            <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><Justify className="mr-3" /> Tickets </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onLineItemVisibilityChange} checked={props.lineItemsAreVisible} /></div></div>
                             <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><Calendar2CheckFill className="mr-3" /> Dates </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onDateMarkersVisibilityChange} checked={props.dateMarkersAreVisible} /></div></div>
                             <hr />
                             <div className="d-flex  justify-content-between"><div className="h6 d-flex  justify-content-start"><MoonStarsFill className="mr-3" /> Dark mode </div> <div className="form-check form-switch"><input className="form-check-input" type="checkbox" onChange={props.onDarkModeChange} checked={props.darkMode} /></div></div>
                         </div>
                         <div className="d-flex mt-2">
                             <ZoomOut />
-                            <input onChange={props.onZoomLevelChange} type="range" className="form-range px-2" min="1" max="5" step="1" id="customRange3" />
+                            <input onChange={props.onZoomLevelChange} type="range" className="form-range px-2" min="1" max="5" step="0.1" id="customRange3" />
                             <ZoomIn />
                         </div>
                         <div className="d-flex justify-content-between mt-4">
@@ -55,7 +55,7 @@ export default function TitleBar(props: {
                     </div>
                 }>
                     
-                    <button className="h3 cast-a-shadow " onClick={() => setShow(!show)}><b><Sliders2 /></b></button>
+                    <button className="h3 cast-a-shadow " onClick={() => setShow(!show)}><b><Sliders /></b></button>
                 </OverlayTrigger>
             
         </div>
